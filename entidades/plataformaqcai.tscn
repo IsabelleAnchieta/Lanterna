@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://ce87jewrbo0ba"]
+
+[ext_resource type="Texture2D" uid="uid://11m5ctf1de4o" path="res://TileSet/PNG/Chaoqcai.png" id="1_a1m22"]
+[ext_resource type="Script" uid="uid://d3gqrb1vu48a2" path="res://entidades/plataformaqcai.gd" id="1_qlt27"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1m22"]
+size = Vector2(42, 8)
+
+[sub_resource type="Animation" id="Animation_qlt27"]
+length = 0.4
+
+[sub_resource type="Animation" id="Animation_tpysw"]
+resource_name = "shake"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2, 0), Vector2(0, 0), Vector2(-2, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y2q0r"]
+_data = {
+&"RESET": SubResource("Animation_qlt27"),
+&"shake": SubResource("Animation_tpysw")
+}
+
+[node name="plat" type="AnimatableBody2D" unique_id=972001235]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_qlt27")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1358830527]
+texture = ExtResource("1_a1m22")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1063001874]
+shape = SubResource("RectangleShape2D_a1m22")
+one_way_collision = true
+
+[node name="timer_respawn" type="Timer" parent="." unique_id=1607625858]
+
+[node name="anim" type="AnimationPlayer" parent="." unique_id=1229214783]
+libraries/ = SubResource("AnimationLibrary_y2q0r")
+autoplay = &"RESET"
+
+[connection signal="timeout" from="timer_respawn" to="." method="_on_timer_respawn_timeout"]
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
