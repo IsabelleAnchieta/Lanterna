@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bgmqdxdd2gbv3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fm85b"]
+
+[node name="LightPlataform" type="StaticBody2D" unique_id=245557795]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1469113059]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2072085723]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=458539075]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1390362192]
+shape = SubResource("RectangleShape2D_fm85b")
