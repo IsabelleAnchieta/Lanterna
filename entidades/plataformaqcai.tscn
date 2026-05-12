@@ -8,6 +8,18 @@ size = Vector2(42, 8)
 
 [sub_resource type="Animation" id="Animation_qlt27"]
 length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_tpysw"]
 resource_name = "shake"
@@ -25,10 +37,27 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(2, 0), Vector2(0, 0), Vector2(-2, 0), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_y2q0r"]
+resource_name = "stop"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y2q0r"]
 _data = {
 &"RESET": SubResource("Animation_qlt27"),
-&"shake": SubResource("Animation_tpysw")
+&"shake": SubResource("Animation_tpysw"),
+&"stop": SubResource("Animation_y2q0r")
 }
 
 [node name="plat" type="AnimatableBody2D" unique_id=972001235]

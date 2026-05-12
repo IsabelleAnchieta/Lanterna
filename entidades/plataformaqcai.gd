@@ -9,6 +9,7 @@ extends AnimatableBody2D
 var velocity := Vector2.ZERO
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_triggered := false
+var animation := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,6 +36,8 @@ func _on_anim_animation_finished(anim_name):
 func _on_timer_respawn_timeout() -> void:
 	set_physics_process(false)
 	global_position = respawn_position
-	is_triggered = false;
-	var spawn_tree = create_tween().set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN_OUT)
-	spawn_tree.tween_property($Sprite2D, "scale", Vector2(1,1), 0.2).from(Vector2(0,0))
+	anim.stop()
+	if is_triggered:
+		var spawn_tree = create_tween().set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN_OUT)
+		spawn_tree.tween_property($Sprite2D, "scale", Vector2(1,1), 0.2).from(Vector2(0,0))
+		is_triggered = false;
