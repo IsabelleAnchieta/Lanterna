@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cxul3yhgbeplm"]
 
+[ext_resource type="Texture2D" uid="uid://drkw5veb1asql" path="res://scenes/luz.jpg" id="1_0p7bn"]
 [ext_resource type="Texture2D" uid="uid://mdwk160rt4vm" path="res://sprites/Plaer/_Idle.png" id="1_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://b10n24xp5j52q" path="res://sprites/Plaer/_Jump.png" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://gmyh1qfs3jb4" path="res://sprites/Plaer/_Run.png" id="3_qlg0r"]
@@ -193,12 +194,18 @@ animations = [{
 [node name="Player" type="CharacterBody2D" unique_id=1421910220]
 z_index = 1
 
+[node name="Mao" type="Marker2D" parent="." unique_id=1129583305]
+position = Vector2(21, -12)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=436763254]
 position = Vector2(3, -2)
 shape = SubResource("CapsuleShape2D_15mv3")
 
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1974127929]
-energy = 1.5
+[node name="Luz" type="PointLight2D" parent="." unique_id=1974127929]
+color = Color(1, 0.95686275, 0.8, 1)
+energy = 1.42
+texture = ExtResource("1_0p7bn")
+texture_scale = 0.22
 height = 19.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2102311714]
@@ -210,8 +217,7 @@ shape = SubResource("CircleShape2D_e3sih")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=825808412]
 position = Vector2(4, -19)
 sprite_frames = SubResource("SpriteFrames_ur7pv")
-animation = &"jump"
-frame_progress = 0.2289947
+animation = &"walk"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=696482339]
 zoom = Vector2(2, 2)

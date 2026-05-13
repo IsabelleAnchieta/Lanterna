@@ -1,16 +1,31 @@
 [gd_scene format=4 uid="uid://csy6bi38q7ljn"]
 
+[ext_resource type="FontFile" uid="uid://dn601wcx6ynnq" path="res://scenes/Awake.ttf" id="1_6dial"]
+[ext_resource type="Texture2D" uid="uid://dprj0pitarvrd" path="res://scenes/barra_vazia.png" id="2_1s4pk"]
 [ext_resource type="Texture2D" uid="uid://mokd3ftqdwex" path="res://TileSet/PNG/Tileset.png" id="2_5xbjy"]
 [ext_resource type="Texture2D" uid="uid://jwrhnkch3caf" path="res://TileSet/PNG/Trees_and_etc.png" id="3_fcfvj"]
+[ext_resource type="Texture2D" uid="uid://bs6nxcau0e2ne" path="res://scenes/barra_cheia.png" id="3_x2xxo"]
+[ext_resource type="Texture2D" uid="uid://dx74utdarkgk0" path="res://scenes/sanidade_vazia.png" id="4_2cbcq"]
 [ext_resource type="PackedScene" uid="uid://cxul3yhgbeplm" path="res://entidades/player.tscn" id="4_4nkto"]
 [ext_resource type="Texture2D" uid="uid://rly0mten78r3" path="res://TileSet/PNG/Layer02.png" id="4_pa8r4"]
 [ext_resource type="Script" uid="uid://dyf8guaoky6t3" path="res://scenes/player.gd" id="5_fcfvj"]
+[ext_resource type="Texture2D" uid="uid://bfic53hbq282b" path="res://scenes/sanidade_cheia.png" id="5_isj1j"]
+[ext_resource type="Texture2D" uid="uid://drkw5veb1asql" path="res://scenes/luz.jpg" id="6_go7sj"]
+[ext_resource type="Texture2D" uid="uid://dfeploma0xuhi" path="res://scenes/game_over.png" id="6_isj1j"]
 [ext_resource type="Texture2D" uid="uid://15juebkkcn4n" path="res://TileSet/PNG/Layer0.png" id="6_pa8r4"]
 [ext_resource type="Texture2D" uid="uid://dqvuopo0hgul6" path="res://TileSet/PNG/Layer01.png" id="7_15mv3"]
+[ext_resource type="Texture2D" uid="uid://b7s6rw54dbpt5" path="res://scenes/normal.png" id="7_d5akn"]
 [ext_resource type="Texture2D" uid="uid://dt8i7kg1l4j45" path="res://TileSet/PNG/Layer03.png" id="8_15mv3"]
+[ext_resource type="Texture2D" uid="uid://dfw46yqlsij1t" path="res://scenes/pressed.png" id="8_wbtxt"]
 [ext_resource type="Texture2D" uid="uid://dk0byb6ysdrh0" path="res://TileSet/PNG/Layer4B.png" id="9_e3sih"]
+[ext_resource type="Texture2D" uid="uid://xsgpurqsipvn" path="res://scenes/mouse.png" id="9_x2fux"]
 [ext_resource type="Texture2D" uid="uid://bswkoek6pfktc" path="res://TileSet/PNG/Layer04C.png" id="10_2y5yt"]
 [ext_resource type="PackedScene" uid="uid://ce87jewrbo0ba" path="res://entidades/plataformaqcai.tscn" id="11_2os1m"]
+[ext_resource type="Texture2D" uid="uid://syco3tr83ay0" path="res://scenes/iUDkX7.png" id="13_2aecg"]
+[ext_resource type="Script" uid="uid://dv5d1rww8woa1" path="res://scenes/area_2d.gd" id="14_2aecg"]
+
+[sub_resource type="FontVariation" id="FontVariation_7nomh"]
+base_font = ExtResource("1_6dial")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_61r73"]
 texture = ExtResource("2_5xbjy")
@@ -282,6 +297,79 @@ texture = ExtResource("4_pa8r4")
 sources/0 = SubResource("TileSetAtlasSource_wup5j")
 sources/1 = SubResource("TileSetAtlasSource_nnya8")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dial"]
+atlas = ExtResource("13_2aecg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nomh"]
+atlas = ExtResource("13_2aecg")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1s4pk"]
+atlas = ExtResource("13_2aecg")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2xxo"]
+atlas = ExtResource("13_2aecg")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cbcq"]
+atlas = ExtResource("13_2aecg")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isj1j"]
+atlas = ExtResource("13_2aecg")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_so66j"]
+atlas = ExtResource("13_2aecg")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr1x6"]
+atlas = ExtResource("13_2aecg")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d5akn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dial")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nomh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1s4pk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2xxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cbcq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isj1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_so66j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr1x6")
+}],
+"loop": true,
+"name": &"acesa",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"apagada",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2aecg"]
+radius = 3.0
+height = 22.0
+
 [node name="Level1" type="Node2D" unique_id=1052701262]
 
 [node name="World" type="WorldEnvironment" parent="." unique_id=601035039]
@@ -289,6 +377,101 @@ sources/1 = SubResource("TileSetAtlasSource_nnya8")
 [node name="LightsMechanics" type="Node2D" parent="." unique_id=208172670]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1172554120]
+
+[node name="HintLabel" type="Label" parent="UI" unique_id=261201780]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -81.0
+offset_top = -23.0
+offset_right = 81.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = SubResource("FontVariation_7nomh")
+theme_override_font_sizes/font_size = 31
+text = "Aperte 'E' para pegar"
+
+[node name="HealthContainer" type="Control" parent="UI" unique_id=1615555427]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="UI/HealthContainer" unique_id=1095058947]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2, 2)
+texture_under = ExtResource("2_1s4pk")
+texture_progress = ExtResource("3_x2xxo")
+
+[node name="SanityContainer" type="Control" parent="UI" unique_id=330624954]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SanityBar" type="TextureProgressBar" parent="UI/SanityContainer" unique_id=1761769162]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 0
+offset_top = 18.0
+offset_right = 41.0
+offset_bottom = 58.0
+scale = Vector2(2, 2)
+value = 100.0
+texture_under = ExtResource("4_2cbcq")
+texture_progress = ExtResource("5_isj1j")
+
+[node name="GameOverScreen" type="TextureRect" parent="UI" unique_id=446763866]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -159.0
+offset_top = 59.0
+offset_right = -65.0
+offset_bottom = 153.0
+grow_horizontal = 2
+scale = Vector2(4, 4)
+texture = ExtResource("6_isj1j")
+
+[node name="Container" type="CenterContainer" parent="UI/GameOverScreen" unique_id=307332961]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/GameOverScreen/Container" unique_id=1362299176]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="UI/GameOverScreen/Container/VBoxContainer" unique_id=1618742320]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_6dial")
+theme_override_font_sizes/font_size = 10
+text = "A escuridao te consumiu"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="TextureButton" parent="UI/GameOverScreen/Container/VBoxContainer" unique_id=1266721105]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("7_d5akn")
+texture_pressed = ExtResource("8_wbtxt")
+texture_hover = ExtResource("9_x2fux")
 
 [node name="Tiles" type="Node2D" parent="." unique_id=1207231153]
 position = Vector2(0, -18)
@@ -415,3 +598,59 @@ collision_layer = 1
 [node name="plat2" parent="Platquecai" unique_id=1962259762 instance=ExtResource("11_2os1m")]
 position = Vector2(907, -31)
 collision_layer = 1
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1879437520]
+position = Vector2(136.38416, -22.902893)
+color = Color(0.26147652, 0.26147655, 0.26147652, 1)
+
+[node name="Tocha" type="Node2D" parent="." unique_id=1131245444]
+position = Vector2(355, 50)
+
+[node name="Area2D" type="Area2D" parent="Tocha" unique_id=1708984626]
+script = ExtResource("14_2aecg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Tocha/Area2D" unique_id=2115708313]
+position = Vector2(0, -1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_d5akn")
+animation = &"acesa"
+frame_progress = 0.5134154
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tocha/Area2D" unique_id=1469039261]
+position = Vector2(-1, -1)
+shape = SubResource("CapsuleShape2D_2aecg")
+
+[node name="LuzTocha" type="PointLight2D" parent="Tocha/Area2D" unique_id=2118060811]
+color = Color(1, 0.95686275, 0.8, 1)
+energy = 1.42
+texture = ExtResource("6_go7sj")
+texture_scale = 0.22
+
+[node name="Tocha2" type="Node2D" parent="." unique_id=1382507533]
+position = Vector2(1230, 58)
+
+[node name="Area2D" type="Area2D" parent="Tocha2" unique_id=945784276]
+script = ExtResource("14_2aecg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Tocha2/Area2D" unique_id=402194647]
+position = Vector2(0, -1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_d5akn")
+animation = &"acesa"
+frame_progress = 0.5134154
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tocha2/Area2D" unique_id=1519463038]
+position = Vector2(-1, -1)
+shape = SubResource("CapsuleShape2D_2aecg")
+
+[node name="LuzTocha" type="PointLight2D" parent="Tocha2/Area2D" unique_id=1303341728]
+color = Color(1, 0.95686275, 0.8, 1)
+energy = 1.42
+texture = ExtResource("6_go7sj")
+texture_scale = 0.22
+
+[connection signal="pressed" from="UI/GameOverScreen/Container/VBoxContainer/RestartButton" to="Player" method="_on_restart_button_pressed"]
+[connection signal="body_entered" from="Tocha/Area2D" to="Tocha/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Tocha/Area2D" to="Tocha/Area2D" method="_on_body_exited"]
+[connection signal="body_entered" from="Tocha2/Area2D" to="Tocha2/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Tocha2/Area2D" to="Tocha2/Area2D" method="_on_body_exited"]
