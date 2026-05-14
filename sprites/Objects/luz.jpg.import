@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2xuifks6mpwb"
-path="res://.godot/imported/m8Ug_S.png-882d844dcde949da553e1317fc46a9ed.ctex"
+uid="uid://drkw5veb1asql"
+path="res://.godot/imported/luz.jpg-619048f7924cf94690467d02c9fe1202.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/m8Ug_S.png"
-dest_files=["res://.godot/imported/m8Ug_S.png-882d844dcde949da553e1317fc46a9ed.ctex"]
+source_file="res://sprites/Objects/luz.jpg"
+dest_files=["res://.godot/imported/luz.jpg-619048f7924cf94690467d02c9fe1202.ctex"]
 
 [params]
 

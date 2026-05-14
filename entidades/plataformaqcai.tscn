@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ce87jewrbo0ba"]
 
 [ext_resource type="Texture2D" uid="uid://11m5ctf1de4o" path="res://TileSet/PNG/Chaoqcai.png" id="1_a1m22"]
-[ext_resource type="Script" uid="uid://d3gqrb1vu48a2" path="res://entidades/plataformaqcai.gd" id="1_qlt27"]
+[ext_resource type="Script" uid="uid://d3gqrb1vu48a2" path="res://Scripts/plataformaqcai.gd" id="1_qlt27"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1m22"]
 size = Vector2(42, 8)

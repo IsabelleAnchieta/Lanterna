@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://cs2215gfe20h0"]
+
+[ext_resource type="Script" uid="uid://dv5d1rww8woa1" path="res://Scripts/area_2d.gd" id="1_aeyh8"]
+[ext_resource type="Texture2D" uid="uid://syco3tr83ay0" path="res://sprites/Objects/iUDkX7.png" id="2_ah3bi"]
+[ext_resource type="Texture2D" uid="uid://drkw5veb1asql" path="res://sprites/Objects/luz.jpg" id="3_wiqcg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dial"]
+atlas = ExtResource("2_ah3bi")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nomh"]
+atlas = ExtResource("2_ah3bi")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1s4pk"]
+atlas = ExtResource("2_ah3bi")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2xxo"]
+atlas = ExtResource("2_ah3bi")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cbcq"]
+atlas = ExtResource("2_ah3bi")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isj1j"]
+atlas = ExtResource("2_ah3bi")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_so66j"]
+atlas = ExtResource("2_ah3bi")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr1x6"]
+atlas = ExtResource("2_ah3bi")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d5akn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dial")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nomh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1s4pk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2xxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cbcq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isj1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_so66j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr1x6")
+}],
+"loop": true,
+"name": &"acesa",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"apagada",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2aecg"]
+radius = 3.0
+height = 22.0
+
+[node name="Tocha" type="Node2D" unique_id=1083888791]
+position = Vector2(355, 50)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=878267498]
+script = ExtResource("1_aeyh8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=493122057]
+position = Vector2(0, -1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_d5akn")
+animation = &"acesa"
+frame_progress = 0.5134154
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1969603740]
+position = Vector2(-1, -1)
+shape = SubResource("CapsuleShape2D_2aecg")
+
+[node name="LuzTocha" type="PointLight2D" parent="Area2D" unique_id=1358094116]
+color = Color(1, 0.95686275, 0.8, 1)
+energy = 1.42
+texture = ExtResource("3_wiqcg")
+texture_scale = 0.22
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

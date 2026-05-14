@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfic53hbq282b"
-path="res://.godot/imported/sanidade_cheia.png-157ba8dd0d5ed2a21a1357aa0ff14e11.ctex"
+uid="uid://b4hbs277xb3jj"
+path="res://.godot/imported/20Button pack (mouse).png-5cc854885ada99bd8f2d13a9fd01ad06.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/sanidade_cheia.png"
-dest_files=["res://.godot/imported/sanidade_cheia.png-157ba8dd0d5ed2a21a1357aa0ff14e11.ctex"]
+source_file="res://sprites/UI/20Button pack (mouse).png"
+dest_files=["res://.godot/imported/20Button pack (mouse).png-5cc854885ada99bd8f2d13a9fd01ad06.ctex"]
 
 [params]
 

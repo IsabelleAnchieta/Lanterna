@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://syco3tr83ay0"
-path="res://.godot/imported/iUDkX7.png-7883bd23f2260565af87da72f11c1424.ctex"
+uid="uid://fhkd7qflqto8"
+path="res://.godot/imported/tocha.webp-3c4fb8637095b15967eb2118c78e7702.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/iUDkX7.png"
-dest_files=["res://.godot/imported/iUDkX7.png-7883bd23f2260565af87da72f11c1424.ctex"]
+source_file="res://sprites/Objects/tocha.webp"
+dest_files=["res://.godot/imported/tocha.webp-3c4fb8637095b15967eb2118c78e7702.ctex"]
 
 [params]
 

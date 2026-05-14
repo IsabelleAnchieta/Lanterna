@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs6nxcau0e2ne"
-path="res://.godot/imported/barra_cheia.png-6e449578ecf260028740fb03fd66f728.ctex"
+uid="uid://dx74utdarkgk0"
+path="res://.godot/imported/sanidade_vazia.png-e92bf4e94af07cf35137d5e72c6351c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/barra_cheia.png"
-dest_files=["res://.godot/imported/barra_cheia.png-6e449578ecf260028740fb03fd66f728.ctex"]
+source_file="res://sprites/UI/sanidade_vazia.png"
+dest_files=["res://.godot/imported/sanidade_vazia.png-e92bf4e94af07cf35137d5e72c6351c9.ctex"]
 
 [params]
 

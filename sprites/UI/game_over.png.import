@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfrnavm7msw28"
-path="res://.godot/imported/20Button pack (normal).png-bfc638686dbb12d625dda984021809ff.ctex"
+uid="uid://dfeploma0xuhi"
+path="res://.godot/imported/game_over.png-4d8a3c3cfc1a364ff9a9b8bbd734df64.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/20Button pack (normal).png"
-dest_files=["res://.godot/imported/20Button pack (normal).png-bfc638686dbb12d625dda984021809ff.ctex"]
+source_file="res://sprites/UI/game_over.png"
+dest_files=["res://.godot/imported/game_over.png-4d8a3c3cfc1a364ff9a9b8bbd734df64.ctex"]
 
 [params]
 

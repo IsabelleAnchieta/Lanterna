@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw1ijhjt3vjs6"
-path="res://.godot/imported/cheio.png-da28881f449dd6ceb4eb892e82694e14.ctex"
+uid="uid://d0mrvc7niqb1r"
+path="res://.godot/imported/tocha-removebg-preview.png-405812e56272ab93ef0f0c24fce71b89.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/cheio.png"
-dest_files=["res://.godot/imported/cheio.png-da28881f449dd6ceb4eb892e82694e14.ctex"]
+source_file="res://sprites/Objects/tocha-removebg-preview.png"
+dest_files=["res://.godot/imported/tocha-removebg-preview.png-405812e56272ab93ef0f0c24fce71b89.ctex"]
 
 [params]
 

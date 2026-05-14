@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmil706rlxqtq"
-path="res://.godot/imported/Life GUI.png-5b17484ec4f848dacfa7f74339e02da8.ctex"
+uid="uid://xsgpurqsipvn"
+path="res://.godot/imported/mouse.png-9e7110bc86417683fb6b29eefb53ac51.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Life GUI.png"
-dest_files=["res://.godot/imported/Life GUI.png-5b17484ec4f848dacfa7f74339e02da8.ctex"]
+source_file="res://sprites/UI/mouse.png"
+dest_files=["res://.godot/imported/mouse.png-9e7110bc86417683fb6b29eefb53ac51.ctex"]
 
 [params]
 

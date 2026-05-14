@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dn601wcx6ynnq"
-path="res://.godot/imported/Awake.ttf-3423b2370ec7b2a5aa2d7ebf4da804c5.fontdata"
+path="res://.godot/imported/Awake.ttf-0645ea0d78edb1fe145042cf3a5e4c79.fontdata"
 
 [deps]
 
-source_file="res://scenes/Awake.ttf"
-dest_files=["res://.godot/imported/Awake.ttf-3423b2370ec7b2a5aa2d7ebf4da804c5.fontdata"]
+source_file="res://Fontes/Awake.ttf"
+dest_files=["res://.godot/imported/Awake.ttf-0645ea0d78edb1fe145042cf3a5e4c79.fontdata"]
 
 [params]
 

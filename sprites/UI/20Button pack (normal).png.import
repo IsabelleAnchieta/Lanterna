@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brrryoq7whjdc"
-path="res://.godot/imported/vazio.png-58829b0b439b410ddeb92ae08bb3dcfa.ctex"
+uid="uid://dfrnavm7msw28"
+path="res://.godot/imported/20Button pack (normal).png-b8a81840e732386accd44e872fa1e2b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/vazio.png"
-dest_files=["res://.godot/imported/vazio.png-58829b0b439b410ddeb92ae08bb3dcfa.ctex"]
+source_file="res://sprites/UI/20Button pack (normal).png"
+dest_files=["res://.godot/imported/20Button pack (normal).png-b8a81840e732386accd44e872fa1e2b0.ctex"]
 
 [params]
 

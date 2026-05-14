@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cxul3yhgbeplm"]
 
-[ext_resource type="Texture2D" uid="uid://drkw5veb1asql" path="res://scenes/luz.jpg" id="1_0p7bn"]
+[ext_resource type="Texture2D" uid="uid://drkw5veb1asql" path="res://sprites/Objects/luz.jpg" id="1_0p7bn"]
 [ext_resource type="Texture2D" uid="uid://mdwk160rt4vm" path="res://sprites/Plaer/_Idle.png" id="1_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://b10n24xp5j52q" path="res://sprites/Plaer/_Jump.png" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cwl1pfixmxlwr" path="res://sprites/Plaer/_Death.png" id="2_opfg8"]

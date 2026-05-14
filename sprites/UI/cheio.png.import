@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xsgpurqsipvn"
-path="res://.godot/imported/mouse.png-25081de47c3625d4f34b6f5862c0a32b.ctex"
+uid="uid://dw1ijhjt3vjs6"
+path="res://.godot/imported/cheio.png-aa4a3e8c638e3b5ad56937779415a7e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/mouse.png"
-dest_files=["res://.godot/imported/mouse.png-25081de47c3625d4f34b6f5862c0a32b.ctex"]
+source_file="res://sprites/UI/cheio.png"
+dest_files=["res://.godot/imported/cheio.png-aa4a3e8c638e3b5ad56937779415a7e9.ctex"]
 
 [params]
 
