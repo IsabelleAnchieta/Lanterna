@@ -20,7 +20,7 @@ var vivo = true
 func _physics_process(delta):
 	if not vivo: return
 	# Se a posição Y for maior que o limite (ex: 1200), o player morre
-	if global_position.y > 200: # <--- MUDE ESSE NÚMERO AQUI!
+	if global_position.y > 400: # <--- MUDE ESSE NÚMERO AQUI!
 		morrer()
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -84,6 +84,7 @@ func _process(delta):
 
 	# 4. Checar Morte
 	if vida <= 0:
+		$AnimatedSprite2D.play("death")
 		morrer()
 
 func atualizar_ui():
