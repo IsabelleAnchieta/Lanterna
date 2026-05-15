@@ -33,9 +33,8 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	if body.name == "Player":
 		player_perto = body
-		
-	if not body.pegou_primeira_tocha:
-		hint.visible = true
+		if not body.pegou_primeira_tocha:
+			hint.visible = true
 
 
 func _on_body_exited(body: Node2D) -> void:

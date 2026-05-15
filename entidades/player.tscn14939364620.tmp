@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://cxul3yhgbeplm"]
 
 [ext_resource type="Texture2D" uid="uid://drkw5veb1asql" path="res://sprites/Objects/luz.jpg" id="1_0p7bn"]
+[ext_resource type="Texture2D" uid="uid://mdwk160rt4vm" path="res://sprites/Plaer/_Idle.png" id="1_qhqgy"]
 [ext_resource type="Script" uid="uid://dyf8guaoky6t3" path="res://Scripts/player.gd" id="1_r4ns2"]
 [ext_resource type="Texture2D" uid="uid://evkxqw63hnox" path="res://sprites/Plaer/_AttackNoMovement.png" id="2_2qu0p"]
 [ext_resource type="Texture2D" uid="uid://b10n24xp5j52q" path="res://sprites/Plaer/_Jump.png" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cwl1pfixmxlwr" path="res://sprites/Plaer/_Death.png" id="2_opfg8"]
 [ext_resource type="Texture2D" uid="uid://gmyh1qfs3jb4" path="res://sprites/Plaer/_Run.png" id="3_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://cutybefxkkv1p" path="res://sprites/Plaer/_Hit.png" id="5_s8mye"]
-[ext_resource type="Texture2D" uid="uid://dl4juhir5ffmq" path="res://sprites/Plaer/idlenew.png" id="6_kd8fs"]
 [ext_resource type="Texture2D" uid="uid://dhyfud81wgbh7" path="res://sprites/Plaer/Attack/tile001.png" id="8_wlwsy"]
 [ext_resource type="Script" uid="uid://cmi350lyqj8x8" path="res://Scripts/HitBox.gd" id="10_kd8fs"]
 
@@ -74,45 +74,45 @@ region = Rect2(1080, 0, 120, 80)
 atlas = ExtResource("5_s8mye")
 region = Rect2(0, 0, 120, 80)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_opfg8"]
+atlas = ExtResource("1_qhqgy")
+region = Rect2(0, 0, 120, 80)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1bqy4"]
-atlas = ExtResource("6_kd8fs")
-region = Rect2(0, 0, 20, 80)
+atlas = ExtResource("1_qhqgy")
+region = Rect2(120, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_remub"]
-atlas = ExtResource("6_kd8fs")
-region = Rect2(20, 0, 20, 80)
+atlas = ExtResource("1_qhqgy")
+region = Rect2(240, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2o2oh"]
-atlas = ExtResource("6_kd8fs")
-region = Rect2(40, 0, 20, 80)
+atlas = ExtResource("1_qhqgy")
+region = Rect2(360, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b1rr4"]
-atlas = ExtResource("6_kd8fs")
-region = Rect2(60, 0, 20, 80)
+atlas = ExtResource("1_qhqgy")
+region = Rect2(480, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_80po8"]
-atlas = ExtResource("6_kd8fs")
-region = Rect2(80, 0, 20, 80)
+atlas = ExtResource("1_qhqgy")
+region = Rect2(600, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6td8g"]
-atlas = ExtResource("6_kd8fs")
-region = Rect2(100, 0, 20, 80)
+atlas = ExtResource("1_qhqgy")
+region = Rect2(720, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o1dl2"]
-atlas = ExtResource("6_kd8fs")
-region = Rect2(120, 0, 20, 80)
+atlas = ExtResource("1_qhqgy")
+region = Rect2(840, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l66pl"]
-atlas = ExtResource("6_kd8fs")
-region = Rect2(140, 0, 20, 80)
+atlas = ExtResource("1_qhqgy")
+region = Rect2(960, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l0nbo"]
-atlas = ExtResource("6_kd8fs")
-region = Rect2(160, 0, 20, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_olv0n"]
-atlas = ExtResource("6_kd8fs")
-region = Rect2(180, 0, 20, 80)
+atlas = ExtResource("1_qhqgy")
+region = Rect2(1080, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
 atlas = ExtResource("2_dqkch")
@@ -226,9 +226,12 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit",
-"speed": 20.0
+"speed": 0.2
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opfg8")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1bqy4")
 }, {
@@ -255,9 +258,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l0nbo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_olv0n")
 }],
 "loop": true,
 "name": &"idle",
@@ -324,7 +324,7 @@ func _on_body_entered(body: Node2D) -> void:
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r4ns2"]
-size = Vector2(32, 31)
+size = Vector2(20, 31)
 
 [sub_resource type="Animation" id="Animation_l7jkh"]
 length = 0.001
@@ -364,17 +364,16 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kd8fs"]
-size = Vector2(16, 39)
+size = Vector2(16, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8mye"]
-size = Vector2(12, 35.5)
+size = Vector2(12, 35)
 
 [sub_resource type="GDScript" id="GDScript_kd8fs"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1421910220]
 z_index = 1
-position = Vector2(1, -1)
-collision_mask = 50
+collision_mask = 54
 platform_floor_layers = 4294901761
 platform_wall_layers = 2
 script = ExtResource("1_r4ns2")
@@ -383,7 +382,6 @@ script = ExtResource("1_r4ns2")
 position = Vector2(21, -12)
 
 [node name="Luz" type="PointLight2D" parent="." unique_id=1974127929]
-position = Vector2(0, -21)
 color = Color(1, 0.95686275, 0.8, 1)
 energy = 1.42
 texture = ExtResource("1_0p7bn")
@@ -391,7 +389,6 @@ texture_scale = 0.22
 height = 19.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2102311714]
-position = Vector2(0, -20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1414611292]
 position = Vector2(-2, 1)
@@ -399,9 +396,9 @@ shape = SubResource("CircleShape2D_e3sih")
 debug_color = Color(0.623548, 0.53216314, 0.08242837, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=825808412]
-position = Vector2(-1, -40)
+position = Vector2(4, -19)
 sprite_frames = SubResource("SpriteFrames_ur7pv")
-animation = &"idle"
+animation = &"hit"
 
 [node name="hurtbox" type="Area2D" parent="AnimatedSprite2D" unique_id=993758928]
 position = Vector2(-4, 19)
@@ -411,12 +408,11 @@ collision_mask = 4
 script = SubResource("GDScript_s8mye")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/hurtbox" unique_id=1087629117]
-position = Vector2(28, 5)
+position = Vector2(20, 4.5)
 shape = SubResource("RectangleShape2D_r4ns2")
 disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=696482339]
-position = Vector2(0, -21)
 zoom = Vector2(2, 2)
 limit_left = 0
 limit_bottom = 200
@@ -435,30 +431,15 @@ collision_mask = 52
 script = ExtResource("10_kd8fs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=249380755]
-position = Vector2(-1, -17.5)
+position = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_kd8fs")
 debug_color = Color(0, 0.6473854, 0.22083789, 0.41960785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=436763254]
-position = Vector2(-1, -17.75)
+position = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_s8mye")
 debug_color = Color(1.8289685e-06, 0.6055989, 0.66860306, 0.41960785)
 script = SubResource("GDScript_kd8fs")
-
-[node name="ray_right" type="RayCast2D" parent="." unique_id=1412829505]
-position = Vector2(0, -18)
-target_position = Vector2(12, 0)
-collision_mask = 4
-
-[node name="ray_top" type="RayCast2D" parent="." unique_id=520952173]
-position = Vector2(0, -18)
-target_position = Vector2(0, -23)
-collision_mask = 4
-
-[node name="ray_left" type="RayCast2D" parent="." unique_id=1387247186]
-position = Vector2(0, -18)
-target_position = Vector2(-12, 0)
-collision_mask = 4
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="AnimatedSprite2D/hurtbox" to="." method="_on_hurtbox_area_entered"]

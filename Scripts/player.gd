@@ -6,6 +6,11 @@ extends CharacterBody2D
 @onready var game_over_screen = %GameOverScreen
 @onready var luz = $Luz
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var anim := $AnimatedSprite2D as AnimatedSprite2D
+@onready var ray_dir := $ray_right as RayCast2D
+@onready var ray_esq := $ray_left as RayCast2D
+@onready var ray_cima := $ray_top as RayCast2D
+
 
 @export var speed: float = 150.0
 @export var jump_velocity: float = -320.0
@@ -16,6 +21,8 @@ var sanidade: float = 100.0
 var energia_luz: float = 0.0
 var pegou_primeira_tocha = false
 var vivo = true
+var semaforo = true
+var knockback_vector := Vector2.ZERO
 
 func _physics_process(delta):
 	if not vivo: return
@@ -27,21 +34,44 @@ func _physics_process(delta):
 
 	var direction = Input.get_axis("left", "right")
 	
-	if direction:
-		velocity.x = direction * speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-
-	if is_on_floor():
-		if direction != 0:
-			$AnimatedSprite2D.flip_h = direction < 0
-			$AnimatedSprite2D.play("walk")
+	#QUAL LADO ANDAR
+	
+	if semaforo == true:
+		if direction:
+			velocity.x = direction * speed
 		else:
-			$AnimatedSprite2D.play("idle")
+			velocity.x = move_toward(velocity.x, 0, speed)
+	else:
+		velocity.x = 0;
+	
+	#ALTERNAR ENTRE ANDAR E FICAR PARADO
+	
+	if semaforo == true:
+		if is_on_floor():
+			if direction != 0:
+				$AnimatedSprite2D.scale.x = direction
+				$AnimatedSprite2D.play("walk")
+			else:
+				$AnimatedSprite2D.play("idle")
+
+#PARA PULAR
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
 		$AnimatedSprite2D.play("jump")
+
+#CALCULO DA PANCADA
+
+	if knockback_vector != Vector2.ZERO:
+		velocity = knockback_vector
+
+#PRA ATACAR
+
+	if Input.is_action_just_pressed("atacar") && is_on_floor():
+		semaforo = false
+		$AnimatedSprite2D.play("attack")
+		$AnimationPlayer.play("attack")
+		
 
 	move_and_slide()
 
@@ -72,7 +102,7 @@ func _process(delta):
 	sanity_bar.value = sanidade
 	
 	# Debug no terminal para ver os números descendo
-	print("Sanidade atual: ", sanidade)
+	#print("Sanidade atual: ", sanidade)
 
 	# 2. Lógica da Vida (Dano se sanidade for 0)
 	if sanidade <= 0:
@@ -112,3 +142,20 @@ func morrer():
 
 func _on_restart_button_pressed() -> void:
 	get_tree().reload_current_scene() # Essa linha reinicia o jogo
+
+#NÃO FICAR PRESO EM ANIMAÇÕES DE PORRADA OU DE BATER
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if !semaforo:
+		semaforo = true
+
+#LEVAR PORRADA E IR PRA TRÁS
+
+func take_hit(knockback_force := Vector2.ZERO, duration := 0.25):
+		vida -= 10
+		
+		if knockback_force != Vector2.ZERO:
+			knockback_vector = knockback_force
+			
+			var knockback_tween := get_tree().create_tween()
+			knockback_tween.tween_property(self, "knockback_vector", Vector2.ZERO, duration)

@@ -81,6 +81,7 @@ height = 22.0
 position = Vector2(355, 50)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=878267498]
+collision_layer = 8
 script = ExtResource("1_aeyh8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=493122057]
