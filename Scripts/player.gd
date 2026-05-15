@@ -48,17 +48,35 @@ func _physics_process(delta):
 	
 	if semaforo == true:
 		if is_on_floor():
+			$AnimatedSprite2D.flip_h = direction < 0
+
+	#ANDANDO
 			if direction != 0:
-				$AnimatedSprite2D.scale.x = direction
-				$AnimatedSprite2D.play("walk")
+
+				if energia_luz > 0:
+					if $AnimatedSprite2D.animation != "walk_tocha":
+						$AnimatedSprite2D.play("walk_tocha")
+				else:
+					if $AnimatedSprite2D.animation != "walk":
+						$AnimatedSprite2D.play("walk")
+
+	#PARADO
 			else:
-				$AnimatedSprite2D.play("idle")
 
-#PARA PULAR
+				if energia_luz > 0:
+					if $AnimatedSprite2D.animation != "idle_tocha":
+						$AnimatedSprite2D.play("idle_tocha")
+				else:
+					if $AnimatedSprite2D.animation != "idle":
+						$AnimatedSprite2D.play("idle")
+	#PULO			
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = jump_velocity
 
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_velocity
-		$AnimatedSprite2D.play("jump")
+			if energia_luz > 0:
+				$AnimatedSprite2D.play("jump_tocha")
+			else:
+				$AnimatedSprite2D.play("jump")
 
 #CALCULO DA PANCADA
 
