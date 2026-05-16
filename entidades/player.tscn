@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cxul3yhgbeplm"]
 
 [ext_resource type="Texture2D" uid="uid://drkw5veb1asql" path="res://sprites/Objects/luz.jpg" id="1_0p7bn"]
-[ext_resource type="Script" uid="uid://dyf8guaoky6t3" path="res://Scripts/player.gd" id="1_r4ns2"]
+[ext_resource type="Script" uid="uid://dyf8guaoky6t3" path="res://Scripts/Player/player.gd" id="1_r4ns2"]
 [ext_resource type="Texture2D" uid="uid://evkxqw63hnox" path="res://sprites/Plaer/_AttackNoMovement.png" id="2_2qu0p"]
 [ext_resource type="Texture2D" uid="uid://b10n24xp5j52q" path="res://sprites/Plaer/_Jump.png" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cwl1pfixmxlwr" path="res://sprites/Plaer/_Death.png" id="2_opfg8"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://nvltbroejt1h" path="res://sprites/Plaer/idle_tocha.png" id="7_1wo38"]
 [ext_resource type="Texture2D" uid="uid://dhyfud81wgbh7" path="res://sprites/Plaer/Attack/tile001.png" id="8_wlwsy"]
 [ext_resource type="Texture2D" uid="uid://dnr387bs7sqts" path="res://sprites/Plaer/jump_tocha.png" id="9_l7jkh"]
-[ext_resource type="Script" uid="uid://cmi350lyqj8x8" path="res://Scripts/HitBox.gd" id="10_kd8fs"]
+[ext_resource type="Script" uid="uid://cmi350lyqj8x8" path="res://Scripts/Player/HitBox.gd" id="10_kd8fs"]
 [ext_resource type="Texture2D" uid="uid://s2k1fsxwjr7q" path="res://sprites/Plaer/Run_tocha.png" id="11_kq7hh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e3sih"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://7lsumnseno3m"]
 
 [ext_resource type="Texture2D" uid="uid://b1efifcanhsqa" path="res://sprites/Objects/recupera_vida.png" id="1_fwsbe"]
-[ext_resource type="Script" uid="uid://crtp1c5ufyjay" path="res://scenes/pocao.gd" id="1_w4aqe"]
+[ext_resource type="Script" uid="uid://crtp1c5ufyjay" path="res://Scripts/pocao.gd" id="1_w4aqe"]
 [ext_resource type="Texture2D" uid="uid://5yeg0rjif6xf" path="res://sprites/Objects/red_potion.png" id="2_3qi6c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w4aqe"]
