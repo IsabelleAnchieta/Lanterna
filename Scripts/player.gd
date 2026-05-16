@@ -24,6 +24,10 @@ var vivo = true
 var semaforo = true
 var knockback_vector := Vector2.ZERO
 
+
+func _ready():
+	add_to_group("player")
+		
 func _physics_process(delta):
 	if not vivo: return
 	# Se a posição Y for maior que o limite (ex: 1200), o player morre

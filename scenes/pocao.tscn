@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://7lsumnseno3m"]
+
+[ext_resource type="Texture2D" uid="uid://b1efifcanhsqa" path="res://sprites/Objects/recupera_vida.png" id="1_fwsbe"]
+[ext_resource type="Script" uid="uid://crtp1c5ufyjay" path="res://scenes/pocao.gd" id="1_w4aqe"]
+[ext_resource type="Texture2D" uid="uid://5yeg0rjif6xf" path="res://sprites/Objects/red_potion.png" id="2_3qi6c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w4aqe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fwsbe")
+}],
+"loop": true,
+"name": &"pocao",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3qi6c"]
+radius = 21.0
+height = 42.0
+
+[node name="ItemPickup" type="Node2D" unique_id=293685691]
+texture_filter = 1
+script = ExtResource("1_w4aqe")
+textura_inventario = ExtResource("2_3qi6c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1591436191]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_w4aqe")
+animation = &"pocao"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=340860973]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=92247216]
+shape = SubResource("CapsuleShape2D_3qi6c")
+
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]

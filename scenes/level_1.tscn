@@ -13,13 +13,28 @@
 [ext_resource type="Texture2D" uid="uid://b7s6rw54dbpt5" path="res://sprites/UI/normal.png" id="7_d5akn"]
 [ext_resource type="Texture2D" uid="uid://dfw46yqlsij1t" path="res://sprites/UI/pressed.png" id="8_wbtxt"]
 [ext_resource type="Texture2D" uid="uid://xsgpurqsipvn" path="res://sprites/UI/mouse.png" id="9_x2fux"]
+[ext_resource type="Script" uid="uid://bed10v705j00q" path="res://scenes/iventory_ui.gd" id="10_d5akn"]
+[ext_resource type="Texture2D" uid="uid://gvqxgkauy2dg" path="res://sprites/Objects/iventario_panel.png" id="10_isj1j"]
 [ext_resource type="PackedScene" uid="uid://ce87jewrbo0ba" path="res://entidades/plataformaqcai.tscn" id="11_2os1m"]
+[ext_resource type="Texture2D" uid="uid://cnl5dbrf2vftd" path="res://sprites/Objects/iventario.png" id="11_so66j"]
+[ext_resource type="FontFile" uid="uid://cqrx4kfjqikng" path="res://Fontes/Obelisk-Demo.ttf" id="13_wbtxt"]
 [ext_resource type="PackedScene" uid="uid://bsceau60dp2ck" path="res://background/parallax_2d.tscn" id="17_1s4pk"]
 [ext_resource type="PackedScene" uid="uid://cvhhpkjtbc5u" path="res://entidades/basic_enemy.tscn" id="18_x2xxo"]
+[ext_resource type="Script" uid="uid://bra4w3bu6t58b" path="res://scenes/baú.gd" id="20_d5akn"]
+[ext_resource type="Texture2D" uid="uid://de1iaa2xrx3bj" path="res://sprites/Objects/Chest.png" id="20_tr1x6"]
 [ext_resource type="PackedScene" uid="uid://cs2215gfe20h0" path="res://entidades/tocha.tscn" id="21_so66j"]
+[ext_resource type="PackedScene" uid="uid://7lsumnseno3m" path="res://scenes/pocao.tscn" id="21_wbtxt"]
 
 [sub_resource type="FontVariation" id="FontVariation_7nomh"]
 base_font = ExtResource("1_6dial")
+
+[sub_resource type="LabelSettings" id="LabelSettings_wbtxt"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x2fux"]
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_61r73"]
 texture = ExtResource("2_5xbjy")
@@ -230,6 +245,36 @@ texture = ExtResource("4_pa8r4")
 sources/0 = SubResource("TileSetAtlasSource_wup5j")
 sources/1 = SubResource("TileSetAtlasSource_nnya8")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbtxt"]
+atlas = ExtResource("20_tr1x6")
+region = Rect2(0, 0, 21, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5akn"]
+atlas = ExtResource("20_tr1x6")
+region = Rect2(21, 0, 21, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x2fux"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbtxt")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5akn")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7g0b"]
+size = Vector2(55, 26)
+
 [node name="Level1" type="Node2D" unique_id=1052701262]
 
 [node name="World" type="WorldEnvironment" parent="." unique_id=601035039]
@@ -333,6 +378,376 @@ texture_normal = ExtResource("7_d5akn")
 texture_pressed = ExtResource("8_wbtxt")
 texture_hover = ExtResource("9_x2fux")
 
+[node name="IventoryUI" type="Control" parent="UI" unique_id=317906083 groups=["inventario"]]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("10_d5akn")
+
+[node name="TextureRect" type="TextureRect" parent="UI/IventoryUI" unique_id=437957510]
+texture_filter = 1
+layout_mode = 0
+offset_left = 5.0
+offset_top = 61.0
+offset_right = 155.0
+offset_bottom = 199.0
+mouse_filter = 2
+texture = ExtResource("10_isj1j")
+
+[node name="TextureRect" type="TextureRect" parent="UI/IventoryUI/TextureRect" unique_id=192933322]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1.0
+offset_top = 4.0
+offset_right = 149.0
+offset_bottom = 135.0
+mouse_filter = 2
+texture = ExtResource("11_so66j")
+
+[node name="Slot1" type="TextureRect" parent="UI/IventoryUI/TextureRect/TextureRect" unique_id=1886771955]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 13.0
+offset_top = 7.0
+offset_right = 39.0
+offset_bottom = 33.0
+mouse_filter = 0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Highlight" type="ColorRect" parent="UI/IventoryUI/TextureRect/TextureRect/Slot1" unique_id=1510769976]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(1, 1, 1, 0.22352941)
+
+[node name="Slot2" type="TextureRect" parent="UI/IventoryUI/TextureRect/TextureRect" unique_id=659686912]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 43.0
+offset_top = 7.0
+offset_right = 73.0
+offset_bottom = 34.0
+mouse_filter = 0
+
+[node name="Highlight" type="ColorRect" parent="UI/IventoryUI/TextureRect/TextureRect/Slot2" unique_id=901411980]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.22352941)
+
+[node name="Slot3" type="TextureRect" parent="UI/IventoryUI/TextureRect/TextureRect" unique_id=1134983238]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 75.0
+offset_top = 7.0
+offset_right = 105.0
+offset_bottom = 34.0
+mouse_filter = 0
+
+[node name="Highlight" type="ColorRect" parent="UI/IventoryUI/TextureRect/TextureRect/Slot3" unique_id=1897003001]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.22352941)
+
+[node name="Slot4" type="TextureRect" parent="UI/IventoryUI/TextureRect/TextureRect" unique_id=1431267876]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 107.0
+offset_top = 7.0
+offset_right = 137.0
+offset_bottom = 34.0
+mouse_filter = 0
+
+[node name="Highlight" type="ColorRect" parent="UI/IventoryUI/TextureRect/TextureRect/Slot4" unique_id=1620593268]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.22352941)
+
+[node name="Slot5" type="TextureRect" parent="UI/IventoryUI/TextureRect/TextureRect" unique_id=478226926]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 11.0
+offset_top = 36.0
+offset_right = 41.0
+offset_bottom = 63.0
+mouse_filter = 0
+
+[node name="Highlight" type="ColorRect" parent="UI/IventoryUI/TextureRect/TextureRect/Slot5" unique_id=12551520]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.22352941)
+
+[node name="Slot6" type="TextureRect" parent="UI/IventoryUI/TextureRect/TextureRect" unique_id=482522851]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 43.0
+offset_top = 36.0
+offset_right = 73.0
+offset_bottom = 63.0
+mouse_filter = 0
+
+[node name="Highlight" type="ColorRect" parent="UI/IventoryUI/TextureRect/TextureRect/Slot6" unique_id=157157004]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.22352941)
+
+[node name="Slot7" type="TextureRect" parent="UI/IventoryUI/TextureRect/TextureRect" unique_id=62817191]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 75.0
+offset_top = 36.0
+offset_right = 105.0
+offset_bottom = 63.0
+mouse_filter = 0
+
+[node name="Highlight" type="ColorRect" parent="UI/IventoryUI/TextureRect/TextureRect/Slot7" unique_id=1157607477]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.22352941)
+
+[node name="Slot8" type="TextureRect" parent="UI/IventoryUI/TextureRect/TextureRect" unique_id=1567167030]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 107.0
+offset_top = 36.0
+offset_right = 137.0
+offset_bottom = 63.0
+mouse_filter = 0
+
+[node name="Highlight" type="ColorRect" parent="UI/IventoryUI/TextureRect/TextureRect/Slot8" unique_id=468630319]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.22352941)
+
+[node name="Slot9" type="TextureRect" parent="UI/IventoryUI/TextureRect/TextureRect" unique_id=1329955411]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 11.0
+offset_top = 66.0
+offset_right = 41.0
+offset_bottom = 93.0
+mouse_filter = 0
+
+[node name="Highlight" type="ColorRect" parent="UI/IventoryUI/TextureRect/TextureRect/Slot9" unique_id=936377829]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.22352941)
+
+[node name="Slot10" type="TextureRect" parent="UI/IventoryUI/TextureRect/TextureRect" unique_id=618424803]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 43.0
+offset_top = 66.0
+offset_right = 73.0
+offset_bottom = 93.0
+mouse_filter = 0
+
+[node name="Highlight" type="ColorRect" parent="UI/IventoryUI/TextureRect/TextureRect/Slot10" unique_id=1264426805]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.22352941)
+
+[node name="Slot11" type="TextureRect" parent="UI/IventoryUI/TextureRect/TextureRect" unique_id=861806888]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 75.0
+offset_top = 66.0
+offset_right = 105.0
+offset_bottom = 93.0
+mouse_filter = 0
+
+[node name="Highlight" type="ColorRect" parent="UI/IventoryUI/TextureRect/TextureRect/Slot11" unique_id=800726822]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.22352941)
+
+[node name="Slot12" type="TextureRect" parent="UI/IventoryUI/TextureRect/TextureRect" unique_id=2026689224]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 107.0
+offset_top = 66.0
+offset_right = 137.0
+offset_bottom = 93.0
+mouse_filter = 0
+
+[node name="Highlight" type="ColorRect" parent="UI/IventoryUI/TextureRect/TextureRect/Slot12" unique_id=1894661367]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.22352941)
+
+[node name="Slot13" type="TextureRect" parent="UI/IventoryUI/TextureRect/TextureRect" unique_id=1404665420]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 11.0
+offset_top = 95.0
+offset_right = 41.0
+offset_bottom = 122.0
+mouse_filter = 0
+
+[node name="Highlight" type="ColorRect" parent="UI/IventoryUI/TextureRect/TextureRect/Slot13" unique_id=1125354748]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.22352941)
+
+[node name="Slot14" type="TextureRect" parent="UI/IventoryUI/TextureRect/TextureRect" unique_id=990577332]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 43.0
+offset_top = 95.0
+offset_right = 73.0
+offset_bottom = 122.0
+mouse_filter = 0
+
+[node name="Highlight" type="ColorRect" parent="UI/IventoryUI/TextureRect/TextureRect/Slot14" unique_id=337193022]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.22352941)
+
+[node name="Slot15" type="TextureRect" parent="UI/IventoryUI/TextureRect/TextureRect" unique_id=215928480]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 75.0
+offset_top = 95.0
+offset_right = 105.0
+offset_bottom = 122.0
+mouse_filter = 0
+
+[node name="Highlight" type="ColorRect" parent="UI/IventoryUI/TextureRect/TextureRect/Slot15" unique_id=1968441155]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.22352941)
+
+[node name="Slot16" type="TextureRect" parent="UI/IventoryUI/TextureRect/TextureRect" unique_id=2060451240]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 107.0
+offset_top = 95.0
+offset_right = 137.0
+offset_bottom = 122.0
+mouse_filter = 0
+
+[node name="Highlight" type="ColorRect" parent="UI/IventoryUI/TextureRect/TextureRect/Slot16" unique_id=951997519]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.22352941)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/IventoryUI" unique_id=305607527]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = -44.0
+offset_top = 200.0
+offset_right = 156.0
+offset_bottom = 280.0
+
+[node name="NomeItem" type="Label" parent="UI/IventoryUI/VBoxContainer" unique_id=478280214]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("13_wbtxt")
+theme_override_font_sizes/font_size = 11
+text = "Cura"
+label_settings = SubResource("LabelSettings_wbtxt")
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="DescricaoItem" type="Label" parent="UI/IventoryUI/VBoxContainer" unique_id=765242647]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_6dial")
+theme_override_font_sizes/font_size = 10
+text = "Recupera um pouco de vida."
+label_settings = SubResource("LabelSettings_x2fux")
+horizontal_alignment = 2
+autowrap_mode = 2
+
 [node name="Tiles" type="Node2D" parent="." unique_id=1207231153]
 position = Vector2(0, -18)
 
@@ -408,7 +823,7 @@ position = Vector2(2265, 84)
 
 [node name="Parallax2D" parent="." unique_id=970274495 instance=ExtResource("17_1s4pk")]
 texture_filter = 1
-scroll_offset = Vector2(6, 8)
+scroll_offset = Vector2(-2, 12)
 
 [node name="Enemie" type="Node2D" parent="." unique_id=1180729454]
 
@@ -420,4 +835,27 @@ position = Vector2(853, -1)
 texture_filter = 1
 position = Vector2(405, 22)
 
+[node name="Baú" type="Node2D" parent="." unique_id=1822143907]
+position = Vector2(460, -10)
+script = ExtResource("20_d5akn")
+item_scene = ExtResource("21_wbtxt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Baú" unique_id=640210401]
+texture_filter = 1
+position = Vector2(0.25, 1)
+scale = Vector2(0.97619045, 0.8888889)
+sprite_frames = SubResource("SpriteFrames_x2fux")
+animation = &"closed"
+
+[node name="Area2D" type="Area2D" parent="Baú" unique_id=921398976]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Baú/Area2D" unique_id=663226209]
+position = Vector2(-2.5, -4)
+shape = SubResource("RectangleShape2D_s7g0b")
+
+[node name="Marker2D" type="Marker2D" parent="Baú" unique_id=1512936229]
+position = Vector2(-1, -4)
+
 [connection signal="pressed" from="UI/GameOverScreen/Container/VBoxContainer/RestartButton" to="Player" method="_on_restart_button_pressed"]
+[connection signal="body_entered" from="Baú/Area2D" to="Baú" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Baú/Area2D" to="Baú" method="_on_area_2d_body_exited"]
