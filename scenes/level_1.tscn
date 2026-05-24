@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dx74utdarkgk0" path="res://sprites/UI/sanidade_vazia.png" id="4_2cbcq"]
 [ext_resource type="PackedScene" uid="uid://cxul3yhgbeplm" path="res://entidades/player.tscn" id="4_4nkto"]
 [ext_resource type="Texture2D" uid="uid://rly0mten78r3" path="res://TileSet/PNG/Layer02.png" id="4_pa8r4"]
+[ext_resource type="Texture2D" uid="uid://dihffdohhpy6s" path="res://sprites/UI/stamina_cheia.png" id="4_wbtxt"]
 [ext_resource type="Texture2D" uid="uid://bfic53hbq282b" path="res://sprites/UI/sanidade_cheia.png" id="5_isj1j"]
 [ext_resource type="Texture2D" uid="uid://dfeploma0xuhi" path="res://sprites/UI/game_over.png" id="6_isj1j"]
 [ext_resource type="Texture2D" uid="uid://b7s6rw54dbpt5" path="res://sprites/UI/normal.png" id="7_d5akn"]
@@ -283,6 +284,24 @@ offset_bottom = 40.0
 scale = Vector2(2, 2)
 texture_under = ExtResource("2_1s4pk")
 texture_progress = ExtResource("3_x2xxo")
+
+[node name="StamineContainer" type="Control" parent="UI" unique_id=541624467]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StamineBar" type="TextureProgressBar" parent="UI/StamineContainer" unique_id=198243342]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 0
+offset_top = 37.0
+offset_right = 41.0
+offset_bottom = 77.0
+scale = Vector2(2, 2)
+value = 100.0
+texture_under = ExtResource("2_1s4pk")
+texture_progress = ExtResource("4_wbtxt")
 
 [node name="SanityContainer" type="Control" parent="UI" unique_id=330624954]
 layout_mode = 3
@@ -792,7 +811,7 @@ position = Vector2(2265, 84)
 
 [node name="Parallax2D" parent="." unique_id=970274495 instance=ExtResource("17_1s4pk")]
 texture_filter = 1
-scroll_offset = Vector2(639, 30)
+scroll_offset = Vector2(583, -14)
 
 [node name="Enemie" type="Node2D" parent="." unique_id=1180729454]
 

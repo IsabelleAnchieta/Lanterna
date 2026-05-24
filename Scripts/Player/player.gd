@@ -3,6 +3,7 @@ extends CharacterBody2D
 # --- REFERÊNCIAS DA UI ---
 @onready var health_bar = %HealthBar
 @onready var sanity_bar = %SanityBar
+@onready var stamine_bar = %StamineBar
 @onready var game_over_screen = %GameOverScreen
 @onready var luz = $Luz
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -13,16 +14,22 @@ extends CharacterBody2D
 
 
 @export var speed: float = 150.0
-@export var jump_velocity: float = -320.0
-@export var gravity: float = 880.0
+@export var jump_velocity: float = -220.0
+@export var gravity: float = 1000.0
 
 var vida: float = 100.0
 var sanidade: float = 100.0
 var energia_luz: float = 0.0
+var stamine: float = 100.0
 var pegou_primeira_tocha = false
 var vivo = true
 var semaforo = true
 var knockback_vector := Vector2.ZERO
+var damage = 0
+var roll = false
+
+var state = "free"
+var action_time = 0.0
 
 
 func _ready():
@@ -51,10 +58,16 @@ func _physics_process(delta):
 			velocity.x = move_toward(velocity.x, 0, speed)
 #Se a gente quiser fazer chão escorregadinho
 #			velocity.x = move_toward(velocity.x, 0, speed*delta)
-	else:
+	elif roll == false:
 		velocity.x = 0;
 	
 	#ALTERNAR ENTRE ANDAR E FICAR PARADO
+	if Input.is_action_just_pressed("roll") && is_on_floor() && roll == false && stamine >= 20:
+		semaforo = false
+		roll = true
+		$AnimatedSprite2D.play("roll")
+		$AnimationPlayer.play("roll")
+		stamine -= 20
 	
 	if semaforo == true:
 		if is_on_floor():
@@ -86,6 +99,9 @@ func _physics_process(delta):
 				$AnimatedSprite2D.play("jump_tocha")
 			else:
 				$AnimatedSprite2D.play("jump")
+		
+		if Input.is_action_pressed("jump"):
+			velocity.y -= 9
 				
 		if Input.is_action_just_pressed("down") and is_on_floor():
 			set_collision_mask_value(2, false)
@@ -99,10 +115,17 @@ func _physics_process(delta):
 
 #PRA ATACAR
 
-	if Input.is_action_just_pressed("atacar") && is_on_floor():
+	if Input.is_action_just_pressed("atacar") && is_on_floor() && action_time > 0.0:
+		damage = 2
+		$AnimatedSprite2D.play("attack2")
+		$AnimationPlayer.play("attack2")
+	if Input.is_action_just_pressed("atacar") && is_on_floor() && semaforo == true && action_time <= 0.0:
 		semaforo = false
+		damage = 1
 		$AnimatedSprite2D.play("attack")
 		$AnimationPlayer.play("attack")
+		action_time = 0.2
+
 
 	move_and_slide()
 
@@ -112,6 +135,11 @@ func _physics_process(delta):
 				collision.get_collider().has_collided_with(collision, self)
 
 func _process(delta):
+	
+	#COMBO
+	if action_time > 0.0:
+		action_time -= 1.0 * delta
+		
 	if not vivo: return
 	# 1. Lógica da Lanterna
 	if energia_luz > 0:
@@ -132,6 +160,8 @@ func _process(delta):
 	# Se o Tween não estiver funcionando, use a linha abaixo para testar direto:
 	sanity_bar.value = sanidade
 	
+	stamine_bar.value = stamine
+	
 	# Debug no terminal para ver os números descendo
 	#print("Sanidade atual: ", sanidade)
 
@@ -147,12 +177,15 @@ func _process(delta):
 	if vida <= 0:
 		$AnimatedSprite2D.play("death")
 		morrer()
+		
+	stamine = move_toward(stamine, 100, delta * 5)
 
 func atualizar_ui():
 	# O Tween faz a barra "deslizar" suavemente
 	var tween = create_tween().set_parallel(true)
 	tween.tween_property(health_bar, "value", vida, 0.2)
 	tween.tween_property(sanity_bar, "value", sanidade, 0.2)
+	tween.tween_property(stamine_bar, "value", stamine, 0.2)
 
 func morrer():
 	if not vivo: return # Evita chamar a função várias vezes
@@ -179,6 +212,7 @@ func _on_restart_button_pressed() -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if !semaforo:
 		semaforo = true
+		roll = false
 
 #LEVAR PORRADA E IR PRA TRÁS
 
@@ -190,3 +224,6 @@ func take_hit(knockback_force := Vector2.ZERO, duration := 0.25):
 			
 			var knockback_tween := get_tree().create_tween()
 			knockback_tween.tween_property(self, "knockback_vector", Vector2.ZERO, duration)
+			
+func camera_damage():
+	$Camera.triggered_shake()
