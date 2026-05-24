@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dk0i88px36bhs"]
+
+[ext_resource type="Script" uid="uid://xinadaku27in" path="res://Scripts/plat_movi.gd" id="1_fvgv8"]
+[ext_resource type="Texture2D" uid="uid://11m5ctf1de4o" path="res://TileSet/PNG/Chaoqcai.png" id="2_yc6d6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qoxe"]
+size = Vector2(44, 11)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" unique_id=1757502485]
+collision_layer = 64
+collision_mask = 5
+sync_to_physics = false
+script = ExtResource("1_fvgv8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=193207436]
+texture = ExtResource("2_yc6d6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1464197869]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_7qoxe")
+one_way_collision = true

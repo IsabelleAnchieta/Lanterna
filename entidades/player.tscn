@@ -553,8 +553,9 @@ size = Vector2(12, 35.5)
 [node name="Player" type="CharacterBody2D" unique_id=1421910220]
 z_index = 1
 position = Vector2(1, -1)
-collision_mask = 50
-platform_floor_layers = 4294901761
+collision_mask = 114
+platform_on_leave = 1
+platform_floor_layers = 4294901824
 platform_wall_layers = 2
 script = ExtResource("1_r4ns2")
 
@@ -571,6 +572,10 @@ height = 19.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2102311714]
 position = Vector2(0, -20)
+disable_mode = 2
+gravity_space_override = 1
+linear_damp_space_override = 1
+angular_damp_space_override = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1414611292]
 position = Vector2(-2, 1)
@@ -581,7 +586,7 @@ debug_color = Color(0.623548, 0.53216314, 0.08242837, 0.41960785)
 texture_filter = 1
 position = Vector2(-1, -40)
 sprite_frames = SubResource("SpriteFrames_ur7pv")
-animation = &"walk_tocha"
+animation = &"attack"
 
 [node name="hurtbox" type="Area2D" parent="AnimatedSprite2D" unique_id=993758928]
 position = Vector2(-4, 19)
@@ -611,7 +616,11 @@ position = Vector2(4, -19)
 texture = ExtResource("8_wlwsy")
 
 [node name="Area2D2" type="Area2D" parent="." unique_id=1801357124]
+disable_mode = 2
 collision_mask = 52
+gravity_space_override = 1
+linear_damp_space_override = 1
+angular_damp_space_override = 1
 script = ExtResource("10_kd8fs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=249380755]

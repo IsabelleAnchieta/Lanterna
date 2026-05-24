@@ -26,8 +26,12 @@ var knockback_vector := Vector2.ZERO
 
 
 func _ready():
+	floor_constant_speed = true
 	add_to_group("player")
-		
+	floor_snap_length = 10.0
+	# Força o player a acumular a velocidade da plataforma ao pular dela
+	platform_on_leave = PLATFORM_ON_LEAVE_ADD_VELOCITY
+	
 func _physics_process(delta):
 	if not vivo: return
 	# Se a posição Y for maior que o limite (ex: 1200), o player morre
@@ -45,6 +49,8 @@ func _physics_process(delta):
 			velocity.x = direction * speed
 		else:
 			velocity.x = move_toward(velocity.x, 0, speed)
+#Se a gente quiser fazer chão escorregadinho
+#			velocity.x = move_toward(velocity.x, 0, speed*delta)
 	else:
 		velocity.x = 0;
 	
@@ -82,7 +88,9 @@ func _physics_process(delta):
 				$AnimatedSprite2D.play("jump")
 				
 		if Input.is_action_just_pressed("down") and is_on_floor():
-			position.y += 1
+			set_collision_mask_value(2, false)
+			await get_tree().create_timer(0.2).timeout
+			set_collision_mask_value(2, true)
 
 #CALCULO DA PANCADA
 
@@ -95,7 +103,6 @@ func _physics_process(delta):
 		semaforo = false
 		$AnimatedSprite2D.play("attack")
 		$AnimationPlayer.play("attack")
-		
 
 	move_and_slide()
 
@@ -103,7 +110,7 @@ func _physics_process(delta):
 		var collision = get_slide_collision(platforms)
 		if collision.get_collider().has_method("has_collided_with"):
 				collision.get_collider().has_collided_with(collision, self)
-				
+
 func _process(delta):
 	if not vivo: return
 	# 1. Lógica da Lanterna
