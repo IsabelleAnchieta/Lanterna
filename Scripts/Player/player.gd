@@ -12,7 +12,7 @@ extends CharacterBody2D
 @onready var ray_esq := $ray_left as RayCast2D
 @onready var ray_cima := $ray_top as RayCast2D
 
-
+@export var ghost_trail : PackedScene
 @export var speed: float = 150.0
 @export var jump_velocity: float = -220.0
 @export var gravity: float = 1000.0
@@ -27,6 +27,9 @@ var semaforo = true
 var knockback_vector := Vector2.ZERO
 var damage = 0
 var roll = false
+var ghost_timer : float = 0.0
+var ghost_interval : float = 0.03
+
 
 var state = "free"
 var action_time = 0.0
@@ -136,6 +139,12 @@ func _physics_process(delta):
 
 func _process(delta):
 	
+	if roll == true:
+		ghost_timer -= delta
+		if ghost_timer <= 0:
+			ghost_timer = ghost_interval
+			spawn_ghost_trail() 
+	
 	#COMBO
 	if action_time > 0.0:
 		action_time -= 1.0 * delta
@@ -217,7 +226,6 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 #LEVAR PORRADA E IR PRA TRÁS
 
 func take_hit(knockback_force := Vector2.ZERO, duration := 0.25):
-		vida -= 10
 		
 		if knockback_force != Vector2.ZERO:
 			knockback_vector = knockback_force
@@ -227,3 +235,11 @@ func take_hit(knockback_force := Vector2.ZERO, duration := 0.25):
 			
 func camera_damage():
 	$Camera.triggered_shake()
+	
+func spawn_ghost_trail():
+	var ghost = ghost_trail.instantiate()
+	ghost.global_position = global_position
+	ghost.rotation = rotation
+	ghost.scale = scale
+	get_parent().add_child(ghost)
+	ghost.setup($AnimatedSprite2D)

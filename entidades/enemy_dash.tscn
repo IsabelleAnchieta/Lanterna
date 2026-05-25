@@ -1,0 +1,257 @@
+[gd_scene format=3 uid="uid://b50m3cbo2sjer"]
+
+[ext_resource type="Texture2D" uid="uid://csofvc82qut31" path="res://sprites/Enemy/Enemy Dash/Lilbrodeat.png" id="1_7iasy"]
+[ext_resource type="Texture2D" uid="uid://bonf2wvy4v8p3" path="res://sprites/Enemy/Enemy Dash/True Runner.png" id="2_7iasy"]
+[ext_resource type="Texture2D" uid="uid://cffyf2cc422i1" path="res://sprites/Enemy/Enemy Dash/Running.png" id="3_nfys8"]
+[ext_resource type="PackedScene" uid="uid://bn6o3by002x0r" path="res://entidades/hitbox.tscn" id="4_5eywi"]
+
+[sub_resource type="GDScript" id="GDScript_7iasy"]
+script/source = "extends CharacterBody2D
+
+const JUMP_VELOCITY = -300.0
+
+@export var SPEED = 2200.0
+@export var vida := 5
+@export var direction := 1
+@export var damage = 30
+
+var walk = true
+var posi = 0.0
+var semaforo = true
+var timer = 1.0
+var timer2 = 1.0
+var wait = true
+
+@onready var wall_detector := $walldet as RayCast2D
+@onready var anim := $AnimatedSprite2D as AnimatedSprite2D
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+		
+	if wall_detector.is_colliding():
+		if direction == 1:
+			direction = -1
+		else:
+			direction = 1
+		wall_detector.scale.x *= -1
+		anim.flip_h = direction < 0
+		wait = false
+
+func _process(delta):
+	if vida > 0:
+		if semaforo == true:
+			if walk == true && wait == true:
+				velocity.x = direction * SPEED * delta * 2
+				anim.play(\"run\")
+
+			else:
+				anim.play(\"idle\")
+				if velocity.x > 0:
+					velocity.x -= 5
+				elif velocity.x < 0:
+					velocity.x += 5
+				else:
+					velocity.x = 0
+		else:
+			take_hit(posi)
+
+		if !walk:
+			timer -= 1.0 * delta
+		else:
+			timer = 1.0
+
+		if timer <= 0:
+			walk = true
+		
+		if !wait:
+			timer2 -= 1.0 * delta
+		else:
+			timer2 = 6.0
+			
+		if timer2 <= 0:
+			wait = true
+
+
+	move_and_slide()
+
+func _on_animated_sprite_2d_animation_finished():
+	queue_free()
+	
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+		wait = false
+		
+func take_hit(posi := 0.0):
+	var dist = posi - position.x
+	
+	if dist > 0:
+		velocity.x = -200
+	else:
+		velocity.x = 200
+	velocity.y = -200
+	
+	semaforo = true
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77mmf"]
+atlas = ExtResource("1_7iasy")
+region = Rect2(0, 0, 20, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqxe8"]
+atlas = ExtResource("1_7iasy")
+region = Rect2(20, 0, 20, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlsu1"]
+atlas = ExtResource("1_7iasy")
+region = Rect2(40, 0, 20, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m04bi"]
+atlas = ExtResource("1_7iasy")
+region = Rect2(60, 0, 20, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgeg7"]
+atlas = ExtResource("1_7iasy")
+region = Rect2(80, 0, 20, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfys8"]
+atlas = ExtResource("2_7iasy")
+region = Rect2(0, 0, 20, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlnuv"]
+atlas = ExtResource("2_7iasy")
+region = Rect2(20, 0, 20, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qam70"]
+atlas = ExtResource("2_7iasy")
+region = Rect2(40, 0, 20, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5eywi"]
+atlas = ExtResource("2_7iasy")
+region = Rect2(60, 0, 20, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtfgf"]
+atlas = ExtResource("2_7iasy")
+region = Rect2(80, 0, 20, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkt4w"]
+atlas = ExtResource("3_nfys8")
+region = Rect2(0, 0, 20, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58iht"]
+atlas = ExtResource("3_nfys8")
+region = Rect2(20, 0, 20, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_km118"]
+atlas = ExtResource("3_nfys8")
+region = Rect2(40, 0, 20, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpvqx"]
+atlas = ExtResource("3_nfys8")
+region = Rect2(60, 0, 20, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvm1e"]
+atlas = ExtResource("3_nfys8")
+region = Rect2(80, 0, 20, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oni25"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77mmf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqxe8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlsu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m04bi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgeg7")
+}],
+"loop": false,
+"name": &"death",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfys8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlnuv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qam70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5eywi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtfgf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkt4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58iht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_km118")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpvqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvm1e")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q3ndq"]
+radius = 5.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7iasy"]
+radius = 4.75
+
+[node name="Enemy dash" type="CharacterBody2D" unique_id=1998195531 groups=["enemies"]]
+collision_layer = 4
+collision_mask = 114
+platform_floor_layers = 4294967106
+script = SubResource("GDScript_7iasy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1801125558]
+position = Vector2(6, -6)
+sprite_frames = SubResource("SpriteFrames_oni25")
+animation = &"run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=675440218]
+position = Vector2(4, -2)
+shape = SubResource("CapsuleShape2D_q3ndq")
+
+[node name="walldet" type="RayCast2D" parent="." unique_id=1132647073]
+position = Vector2(5, -5)
+target_position = Vector2(13, 0)
+collision_mask = 2
+
+[node name="hitbox" parent="." unique_id=1995360508 instance=ExtResource("4_5eywi")]
+position = Vector2(3, -17)
+collision_mask = 49
+script = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1601377349]
+position = Vector2(1.25, 15)
+shape = SubResource("CapsuleShape2D_7iasy")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

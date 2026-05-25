@@ -1,52 +1,53 @@
 [gd_scene format=3 uid="uid://cvhhpkjtbc5u"]
 
 [ext_resource type="Script" uid="uid://cwxyn17qwouv" path="res://Scripts/Inimigozx/basic_enemy.gd" id="1_13oly"]
-[ext_resource type="Texture2D" uid="uid://c7tgswfhvqclx" path="res://sprites/Enemy/_DeathEnemy.png" id="2_o5yh7"]
-[ext_resource type="Texture2D" uid="uid://cpxaj5fs56hrb" path="res://sprites/Enemy/enemy new.png" id="3_o5yh7"]
+[ext_resource type="Texture2D" uid="uid://bl2iw0fe0xqft" path="res://sprites/Enemy/Basic Enemy/Dying.png" id="2_o5yh7"]
+[ext_resource type="Texture2D" uid="uid://bxg8kn824oe6h" path="res://sprites/Enemy/Basic Enemy/pixilart-drawing (1).png" id="3_o5yh7"]
 [ext_resource type="PackedScene" uid="uid://bn6o3by002x0r" path="res://entidades/hitbox.tscn" id="3_q3ndq"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o5yh7"]
-atlas = ExtResource("2_o5yh7")
-region = Rect2(0, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m0fyf"]
 atlas = ExtResource("2_o5yh7")
-region = Rect2(120, 0, 120, 80)
+region = Rect2(0, 0, 20, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5yarl"]
 atlas = ExtResource("2_o5yh7")
-region = Rect2(240, 0, 120, 80)
+region = Rect2(20, 0, 20, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oni25"]
 atlas = ExtResource("2_o5yh7")
-region = Rect2(360, 0, 120, 80)
+region = Rect2(40, 0, 20, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lsnet"]
 atlas = ExtResource("2_o5yh7")
-region = Rect2(480, 0, 120, 80)
+region = Rect2(60, 0, 20, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyv5m"]
+atlas = ExtResource("2_o5yh7")
+region = Rect2(80, 0, 20, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hru1c"]
 atlas = ExtResource("3_o5yh7")
-region = Rect2(0, 0, 15, 80)
+region = Rect2(0, 0, 20, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_brcn0"]
 atlas = ExtResource("3_o5yh7")
-region = Rect2(15, 0, 15, 80)
+region = Rect2(20, 0, 20, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iunai"]
 atlas = ExtResource("3_o5yh7")
-region = Rect2(30, 0, 15, 80)
+region = Rect2(40, 0, 20, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_13c2q"]
 atlas = ExtResource("3_o5yh7")
-region = Rect2(45, 0, 15, 80)
+region = Rect2(60, 0, 20, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krtvc"]
+atlas = ExtResource("3_o5yh7")
+region = Rect2(80, 0, 20, 37)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oni25"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o5yh7")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_m0fyf")
 }, {
@@ -58,6 +59,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lsnet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyv5m")
 }],
 "loop": false,
 "name": &"death",
@@ -75,6 +79,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_13c2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krtvc")
 }],
 "loop": true,
 "name": &"idle",
@@ -94,22 +101,22 @@ platform_floor_layers = 4294967106
 script = ExtResource("1_13oly")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1801125558]
-position = Vector2(6, -28)
+position = Vector2(6, -8)
 sprite_frames = SubResource("SpriteFrames_oni25")
-animation = &"idle"
+animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=675440218]
 position = Vector2(4, -2)
 shape = SubResource("CapsuleShape2D_q3ndq")
 
 [node name="walldet" type="RayCast2D" parent="." unique_id=1132647073]
-position = Vector2(-1, -4)
-target_position = Vector2(16, 0)
+position = Vector2(4, -4)
+target_position = Vector2(13, 0)
 collision_mask = 2
 
 [node name="hitbox" parent="." unique_id=1995360508 instance=ExtResource("3_q3ndq")]
 position = Vector2(3, -17)
-collision_mask = 52
+collision_mask = 48
 script = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1601377349]

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://evkxqw63hnox" path="res://sprites/Plaer/_AttackNoMovement.png" id="2_2qu0p"]
 [ext_resource type="Texture2D" uid="uid://b10n24xp5j52q" path="res://sprites/Plaer/_Jump.png" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cwl1pfixmxlwr" path="res://sprites/Plaer/_Death.png" id="2_opfg8"]
+[ext_resource type="PackedScene" uid="uid://bca6h2u6o04y5" path="res://Efeitos/ghost_trail.tscn" id="2_remub"]
 [ext_resource type="Texture2D" uid="uid://gmyh1qfs3jb4" path="res://sprites/Plaer/_Run.png" id="3_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://h5mgoj7ick22" path="res://sprites/Plaer/_AttackComboNoMovement.png" id="4_l7jkh"]
 [ext_resource type="Texture2D" uid="uid://cutybefxkkv1p" path="res://sprites/Plaer/_Hit.png" id="5_s8mye"]
@@ -489,7 +490,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_tocha",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -517,7 +518,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump_tocha",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -628,7 +629,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_tocha",
-"speed": 5.0
+"speed": 20.0
 }]
 
 [sub_resource type="GDScript" id="GDScript_s8mye"]
@@ -751,6 +752,7 @@ platform_on_leave = 1
 platform_floor_layers = 4294901824
 platform_wall_layers = 2
 script = ExtResource("1_r4ns2")
+ghost_trail = ExtResource("2_remub")
 
 [node name="Mao" type="Marker2D" parent="." unique_id=1129583305]
 position = Vector2(21, -12)
@@ -779,9 +781,7 @@ debug_color = Color(0.623548, 0.53216314, 0.08242837, 0.41960785)
 texture_filter = 1
 position = Vector2(-1, -40)
 sprite_frames = SubResource("SpriteFrames_ur7pv")
-animation = &"roll"
-frame = 11
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="hurtbox" type="Area2D" parent="AnimatedSprite2D" unique_id=993758928]
 position = Vector2(-4, 19)

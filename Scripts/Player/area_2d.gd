@@ -1,8 +1,7 @@
 extends Area2D
 var player_perto = null
 @onready var sprite = $AnimatedSprite2D
-@onready var hint = get_tree().current_scene.get_node("UI/HintLabel")
-
+@onready var hint = get_tree().current_scene.get_node("UI/Dicas/HintLabel")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,11 +10,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
 	if player_perto != null:
 		if Input.is_action_just_pressed("pegar_tocha"):
-			
 			var player = player_perto
-			
 			if player == null:
 				return
 

@@ -24,6 +24,8 @@
 [ext_resource type="PackedScene" uid="uid://cs2215gfe20h0" path="res://entidades/tocha.tscn" id="21_so66j"]
 [ext_resource type="PackedScene" uid="uid://dk0i88px36bhs" path="res://entidades/moviplat.tscn" id="22_d5akn"]
 [ext_resource type="PackedScene" uid="uid://f8gdx08akhj6" path="res://entidades/baú.tscn" id="23_d5akn"]
+[ext_resource type="PackedScene" uid="uid://c2v53s6l2cd0b" path="res://entidades/enemy_jump.tscn" id="23_x2fux"]
+[ext_resource type="PackedScene" uid="uid://b50m3cbo2sjer" path="res://entidades/enemy_dash.tscn" id="24_s7g0b"]
 
 [sub_resource type="FontVariation" id="FontVariation_7nomh"]
 base_font = ExtResource("1_6dial")
@@ -254,7 +256,6 @@ sources/1 = SubResource("TileSetAtlasSource_nnya8")
 [node name="UI" type="CanvasLayer" parent="." unique_id=1172554120]
 
 [node name="HintLabel" type="Label" parent="UI" unique_id=261201780]
-visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -763,7 +764,7 @@ tile_map_data = PackedByteArray("AAAUAAMAAAABAAEAAAAdAAMAAAADAAEAAAAlAAUAAAALAAI
 tile_set = SubResource("TileSet_7gny6")
 
 [node name="Player" parent="." unique_id=1421910220 instance=ExtResource("4_4nkto")]
-position = Vector2(87, 28)
+position = Vector2(83, 34)
 
 [node name="Platquecai" type="Node" parent="." unique_id=1372923270]
 
@@ -817,11 +818,18 @@ scroll_offset = Vector2(583, -14)
 
 [node name="Basic Enemy" parent="Enemie" unique_id=1998195531 instance=ExtResource("18_x2xxo")]
 texture_filter = 1
-position = Vector2(853, -1)
+position = Vector2(179, 6)
+direction = -1
 
 [node name="Basic Enemy2" parent="Enemie" unique_id=70085980 instance=ExtResource("18_x2xxo")]
 texture_filter = 1
-position = Vector2(405, 22)
+position = Vector2(843, 35)
+
+[node name="Enemy jump" parent="Enemie" unique_id=437385232 instance=ExtResource("23_x2fux")]
+position = Vector2(257, -3)
+
+[node name="Enemy dash" parent="Enemie" unique_id=1974911724 instance=ExtResource("24_s7g0b")]
+position = Vector2(659, 40)
 
 [node name="plat_movi" type="Node2D" parent="." unique_id=594279438]
 

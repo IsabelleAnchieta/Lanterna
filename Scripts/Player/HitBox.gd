@@ -4,7 +4,7 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
-		#owner.vida -= 10
+		owner.vida -= body.damage
 		#owner.velocity.y = -220
 		owner.semaforo = false
 		if owner.ray_dir.is_colliding():
