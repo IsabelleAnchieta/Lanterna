@@ -8,6 +8,7 @@ extends Node3D
 @onready var warning = get_tree().current_scene.get_node("UI/Dicas/HintLabel7")
 @onready var player = get_tree().current_scene.get_node("Player")
 @onready var luz = get_tree().current_scene.get_node("Luz")
+@onready var cristal = get_tree().current_scene.get_node("Cristal")
 # Called when the node enters the scene tree for the first time.
 
 @export var Enemy_dash : PackedScene
@@ -30,6 +31,9 @@ func _process(delta: float) -> void:
 	if Global.cristal_obtido == true && luz_morta:
 		luz.queue_free()
 		luz_morta = false
+		if cristal != null:
+			cristal.queue_free()
+		
 	
 	if player.position.x > 400 && player.position.x < 700:
 		hint2.visible = true
