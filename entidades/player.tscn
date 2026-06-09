@@ -750,7 +750,7 @@ position = Vector2(1, -1)
 collision_mask = 114
 platform_on_leave = 1
 platform_floor_layers = 4294901824
-platform_wall_layers = 2
+platform_wall_layers = 6
 script = ExtResource("1_r4ns2")
 ghost_trail = ExtResource("2_remub")
 
@@ -801,6 +801,7 @@ zoom = Vector2(2, 2)
 limit_left = 0
 limit_bottom = 200
 position_smoothing_enabled = true
+position_smoothing_speed = 3.0
 script = ExtResource("13_kq7hh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1649819977]

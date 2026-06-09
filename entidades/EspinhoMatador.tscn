@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dcv711pe2kurp"]
+
+[ext_resource type="Script" uid="uid://slevpnywpm55" path="res://Scripts/Inimigozx/espinho_matador.gd" id="1_g08c3"]
+[ext_resource type="Texture2D" uid="uid://dawo2vuyjx73p" path="res://sprites/Objects/4 Conjoined Spikes.png" id="2_g08c3"]
+[ext_resource type="PackedScene" uid="uid://bn6o3by002x0r" path="res://entidades/hitbox.tscn" id="3_a5mcm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g08c3"]
+size = Vector2(29, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5yh7"]
+size = Vector2(28.5, 5)
+
+[node name="EspinhoMatador" type="CharacterBody2D" unique_id=1998195531 groups=["enemies"]]
+collision_layer = 4
+collision_mask = 114
+platform_floor_layers = 4294967234
+script = ExtResource("1_g08c3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1123466486]
+position = Vector2(-6.0000005, 4)
+scale = Vector2(0.17131162, 0.1580611)
+texture = ExtResource("2_g08c3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=675440218]
+position = Vector2(-6.5, 4.5)
+shape = SubResource("RectangleShape2D_g08c3")
+
+[node name="hitbox" parent="." unique_id=1995360508 instance=ExtResource("3_a5mcm")]
+position = Vector2(3, -17)
+collision_mask = 176
+script = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1601377349]
+position = Vector2(-9.25, 21.5)
+shape = SubResource("RectangleShape2D_o5yh7")
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

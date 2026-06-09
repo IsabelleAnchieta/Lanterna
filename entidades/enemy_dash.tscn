@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bonf2wvy4v8p3" path="res://sprites/Enemy/Enemy Dash/True Runner.png" id="2_7iasy"]
 [ext_resource type="Texture2D" uid="uid://cffyf2cc422i1" path="res://sprites/Enemy/Enemy Dash/Running.png" id="3_nfys8"]
 [ext_resource type="PackedScene" uid="uid://bn6o3by002x0r" path="res://entidades/hitbox.tscn" id="4_5eywi"]
+[ext_resource type="Texture2D" uid="uid://drkw5veb1asql" path="res://sprites/Objects/luz.jpg" id="5_jlnuv"]
 
 [sub_resource type="GDScript" id="GDScript_7iasy"]
 script/source = "extends CharacterBody2D
@@ -227,7 +228,7 @@ radius = 4.75
 [node name="Enemy dash" type="CharacterBody2D" unique_id=1998195531 groups=["enemies"]]
 collision_layer = 4
 collision_mask = 114
-platform_floor_layers = 4294967106
+platform_floor_layers = 4294967234
 script = SubResource("GDScript_7iasy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1801125558]
@@ -242,16 +243,24 @@ shape = SubResource("CapsuleShape2D_q3ndq")
 [node name="walldet" type="RayCast2D" parent="." unique_id=1132647073]
 position = Vector2(5, -5)
 target_position = Vector2(13, 0)
-collision_mask = 2
+collision_mask = 130
 
 [node name="hitbox" parent="." unique_id=1995360508 instance=ExtResource("4_5eywi")]
 position = Vector2(3, -17)
-collision_mask = 49
+collision_mask = 177
 script = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1601377349]
 position = Vector2(1.25, 15)
 shape = SubResource("CapsuleShape2D_7iasy")
+
+[node name="Luz" type="PointLight2D" parent="." unique_id=699367236]
+position = Vector2(0, -21)
+color = Color(1, 0.003921569, 0, 1)
+energy = 1.42
+texture = ExtResource("5_jlnuv")
+texture_scale = 0.22
+height = 19.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

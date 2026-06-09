@@ -11,6 +11,11 @@ extends CharacterBody2D
 @onready var ray_dir := $ray_right as RayCast2D
 @onready var ray_esq := $ray_left as RayCast2D
 @onready var ray_cima := $ray_top as RayCast2D
+@onready var efeito_sanidade = get_parent().get_node("CanvasLayer/ColorRect")
+@onready var shader_material = efeito_sanidade.material
+@onready var vinheta = get_parent().get_node("CanvasLayer/TextureRect")
+@onready var VictoryScreen = get_parent().get_node("VictoryScreen/Label")
+@onready var Labis = get_parent().get_node("VictoryScreen/ColorRect")
 
 @export var ghost_trail : PackedScene
 @export var speed: float = 150.0
@@ -30,7 +35,6 @@ var roll = false
 var ghost_timer : float = 0.0
 var ghost_interval : float = 0.03
 
-
 var state = "free"
 var action_time = 0.0
 
@@ -41,6 +45,15 @@ func _ready():
 	floor_snap_length = 10.0
 	# Força o player a acumular a velocidade da plataforma ao pular dela
 	platform_on_leave = PLATFORM_ON_LEAVE_ADD_VELOCITY
+	
+	if Global.checkpoint_scene == get_tree().current_scene.scene_file_path:
+		var checkpoint = get_tree().current_scene.find_child(
+			Global.checkpoint_name,
+			true,
+			false
+		)
+		if checkpoint:
+			global_position = checkpoint.global_position
 	
 func _physics_process(delta):
 	if not vivo: return
@@ -138,13 +151,13 @@ func _physics_process(delta):
 				collision.get_collider().has_collided_with(collision, self)
 
 func _process(delta):
-	
+
 	if roll == true:
 		ghost_timer -= delta
 		if ghost_timer <= 0:
 			ghost_timer = ghost_interval
 			spawn_ghost_trail() 
-	
+
 	#COMBO
 	if action_time > 0.0:
 		action_time -= 1.0 * delta
@@ -164,6 +177,15 @@ func _process(delta):
 	
 	# Não deixa passar de 100 nem ser menor que 0
 	sanidade = clamp(sanidade, 0, 100)
+
+	vinheta.modulate.a = ((100.0 - sanidade) / 100.0) * 0.8
+	efeito_sanidade.modulate.a = ((100.0 - sanidade) / 100.0) * 0.7
+
+	if shader_material != null:
+		shader_material.set_shader_parameter(
+			"insanity",
+			1.0 - (sanidade / 100.0)
+		)
 	
 	# ATUALIZA A BARRA
 	# Se o Tween não estiver funcionando, use a linha abaixo para testar direto:
@@ -243,3 +265,32 @@ func spawn_ghost_trail():
 	ghost.scale = scale
 	get_parent().add_child(ghost)
 	ghost.setup($AnimatedSprite2D)
+	
+func concluir_fase():
+
+	semaforo = false
+	vivo = false
+	
+	$AnimatedSprite2D.play("idle")
+
+	var camera = $Camera
+
+	var tween = create_tween()
+
+	tween.parallel().tween_property(
+		camera,
+		"zoom",
+		Vector2(6,6),
+		2.0
+	)
+
+	tween.parallel().tween_property(
+		efeito_sanidade,
+		"modulate:a",
+		1.0,
+		2.0
+	)
+
+	await tween.finished
+
+	VictoryScreen.visible = true

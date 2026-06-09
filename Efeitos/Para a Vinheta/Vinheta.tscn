@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dxcdcd63r1hr1"]
+
+[ext_resource type="Texture2D" uid="uid://c0mw8jent6kox" path="res://Efeitos/Para a Vinheta/Vinheta.png" id="1_p6y6x"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=384688950]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=639233542]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=183898760]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_p6y6x")
+expand_mode = 1

@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://b6r0c20c1khru"]
+
+[ext_resource type="Script" uid="uid://dwprvnxe0n8jj" path="res://Scripts/cristal.gd" id="1_vcxlx"]
+[ext_resource type="Texture2D" uid="uid://cpwokhfpoq0bn" path="res://sprites/Cristal Vermelho/red_crystal_0000.png" id="2_d8oeq"]
+[ext_resource type="Texture2D" uid="uid://hojdj8p5qy86" path="res://sprites/Cristal Vermelho/red_crystal_0001.png" id="3_5ywhv"]
+[ext_resource type="Texture2D" uid="uid://bdhhysk8h81sj" path="res://sprites/Cristal Vermelho/red_crystal_0002.png" id="4_12nbc"]
+[ext_resource type="Texture2D" uid="uid://ce5mt8kpk88mg" path="res://sprites/Cristal Vermelho/red_crystal_0003.png" id="5_3r023"]
+[ext_resource type="Texture2D" uid="uid://drkw5veb1asql" path="res://sprites/Objects/luz.jpg" id="6_5ywhv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d8oeq"]
+radius = 21.0
+height = 42.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c33xy"]
+atlas = ExtResource("2_d8oeq")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5fml"]
+atlas = ExtResource("3_5ywhv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7dcy"]
+atlas = ExtResource("4_12nbc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4xhk"]
+atlas = ExtResource("5_3r023")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n6rpk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c33xy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5fml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7dcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4xhk")
+}],
+"loop": true,
+"name": &"Renee",
+"speed": 5.0
+}]
+
+[node name="Cristal" type="Node2D" unique_id=166003114]
+script = ExtResource("1_vcxlx")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=267853114]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1650297921]
+shape = SubResource("CapsuleShape2D_d8oeq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1555400575]
+position = Vector2(1, -2)
+scale = Vector2(0.5492527, 0.67174745)
+sprite_frames = SubResource("SpriteFrames_n6rpk")
+animation = &"Renee"
+frame_progress = 0.5774539
+
+[node name="Luz" type="PointLight2D" parent="." unique_id=1467201157]
+position = Vector2(0, -21)
+color = Color(0.7651274, 0, 0.2804059, 1)
+energy = 1.42
+texture = ExtResource("6_5ywhv")
+texture_scale = 0.22
+height = 19.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

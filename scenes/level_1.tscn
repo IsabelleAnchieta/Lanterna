@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://csy6bi38q7ljn"]
 
 [ext_resource type="FontFile" uid="uid://dn601wcx6ynnq" path="res://Fontes/Awake.ttf" id="1_6dial"]
+[ext_resource type="Script" uid="uid://dmwix248a57f" path="res://Scripts/Cenas Scriptadas/Global.gd" id="1_k8ld0"]
 [ext_resource type="Texture2D" uid="uid://dprj0pitarvrd" path="res://sprites/UI/barra_vazia.png" id="2_1s4pk"]
 [ext_resource type="Texture2D" uid="uid://mokd3ftqdwex" path="res://TileSet/PNG/Tileset.png" id="2_5xbjy"]
 [ext_resource type="Texture2D" uid="uid://jwrhnkch3caf" path="res://TileSet/PNG/Trees_and_etc.png" id="3_fcfvj"]
@@ -26,6 +27,10 @@
 [ext_resource type="PackedScene" uid="uid://f8gdx08akhj6" path="res://entidades/baú.tscn" id="23_d5akn"]
 [ext_resource type="PackedScene" uid="uid://c2v53s6l2cd0b" path="res://entidades/enemy_jump.tscn" id="23_x2fux"]
 [ext_resource type="PackedScene" uid="uid://b50m3cbo2sjer" path="res://entidades/enemy_dash.tscn" id="24_s7g0b"]
+[ext_resource type="PackedScene" uid="uid://fmwke4gv0cqp" path="res://entidades/checkpoint.tscn" id="27_mmfjm"]
+[ext_resource type="PackedScene" uid="uid://7lsumnseno3m" path="res://Itens/pocao.tscn" id="29_hnsmf"]
+[ext_resource type="PackedScene" uid="uid://dxcdcd63r1hr1" path="res://Efeitos/Para a Vinheta/Vinheta.tscn" id="29_mbb35"]
+[ext_resource type="PackedScene" uid="uid://b6r0c20c1khru" path="res://Itens/cristal.tscn" id="30_iw4em"]
 
 [sub_resource type="FontVariation" id="FontVariation_7nomh"]
 base_font = ExtResource("1_6dial")
@@ -38,7 +43,7 @@ outline_color = Color(0, 0, 0, 1)
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_61r73"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k8ld0"]
 texture = ExtResource("2_5xbjy")
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.099095345, -3.963828, 8, -4, -8, -4)
@@ -103,9 +108,9 @@ texture = ExtResource("2_5xbjy")
 [sub_resource type="TileSet" id="TileSet_fcfvj"]
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 5
-sources/0 = SubResource("TileSetAtlasSource_61r73")
+sources/0 = SubResource("TileSetAtlasSource_k8ld0")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6m8ar"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mbb35"]
 texture = ExtResource("2_5xbjy")
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4, 8, -4, 8, 8, -8, 8)
@@ -161,9 +166,9 @@ texture = ExtResource("2_5xbjy")
 [sub_resource type="TileSet" id="TileSet_4nkto"]
 physics_layer_0/collision_layer = 64
 physics_layer_0/collision_mask = 5
-sources/0 = SubResource("TileSetAtlasSource_6m8ar")
+sources/0 = SubResource("TileSetAtlasSource_mbb35")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7pj11"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iw4em"]
 texture = ExtResource("3_fcfvj")
 6:2/0 = 0
 10:2/0 = 0
@@ -188,7 +193,7 @@ texture = ExtResource("3_fcfvj")
 13:4/size_in_atlas = Vector2i(2, 1)
 13:4/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t537h"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hnsmf"]
 texture = ExtResource("4_pa8r4")
 15:0/size_in_atlas = Vector2i(2, 10)
 15:0/0 = 0
@@ -202,10 +207,10 @@ texture = ExtResource("4_pa8r4")
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_2y5yt"]
-sources/0 = SubResource("TileSetAtlasSource_7pj11")
-sources/1 = SubResource("TileSetAtlasSource_t537h")
+sources/0 = SubResource("TileSetAtlasSource_iw4em")
+sources/1 = SubResource("TileSetAtlasSource_hnsmf")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wup5j"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nossa"]
 texture = ExtResource("3_fcfvj")
 6:2/0 = 0
 10:2/0 = 0
@@ -230,7 +235,7 @@ texture = ExtResource("3_fcfvj")
 13:4/size_in_atlas = Vector2i(2, 1)
 13:4/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nnya8"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hjqri"]
 texture = ExtResource("4_pa8r4")
 15:0/size_in_atlas = Vector2i(2, 10)
 15:0/0 = 0
@@ -244,18 +249,23 @@ texture = ExtResource("4_pa8r4")
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_7gny6"]
-sources/0 = SubResource("TileSetAtlasSource_wup5j")
-sources/1 = SubResource("TileSetAtlasSource_nnya8")
+sources/0 = SubResource("TileSetAtlasSource_nossa")
+sources/1 = SubResource("TileSetAtlasSource_hjqri")
 
 [node name="Level1" type="Node2D" unique_id=1052701262]
+script = ExtResource("1_k8ld0")
 
 [node name="World" type="WorldEnvironment" parent="." unique_id=601035039]
+
+[node name="CanvasLayer" parent="." unique_id=384688950 instance=ExtResource("29_mbb35")]
+visible = false
 
 [node name="LightsMechanics" type="Node2D" parent="." unique_id=208172670]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1172554120]
 
 [node name="HintLabel" type="Label" parent="UI" unique_id=261201780]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -763,7 +773,7 @@ texture_filter = 1
 tile_map_data = PackedByteArray("AAAUAAMAAAABAAEAAAAdAAMAAAADAAEAAAAlAAUAAAALAAIAAAA0AAMAAAADAAEAAAAzAPz/AAALAAIAAAADAAEAAQACAAAAAAARAAIAAQALAAAAAAAkAAEAAQAPAAAAAAAxAAEAAQAHAAAAAAA8AAEAAQALAAAAAABJAAMAAAABAAEAAABLAAUAAAALAAIAAABZAAMAAAADAAEAAABYAAUAAAALAAIAAACKAAUAAAADAAEAAACQAAUAAAADAAEAAABjAP3/AAAOAAUAAADEAAYAAAALAAIAAAA=")
 tile_set = SubResource("TileSet_7gny6")
 
-[node name="Player" parent="." unique_id=1421910220 instance=ExtResource("4_4nkto")]
+[node name="Player" parent="." unique_id=1421910220 groups=["player"] instance=ExtResource("4_4nkto")]
 position = Vector2(83, 34)
 
 [node name="Platquecai" type="Node" parent="." unique_id=1372923270]
@@ -847,5 +857,19 @@ inverso = false
 
 [node name="Baú" parent="Baús" unique_id=2106390431 instance=ExtResource("23_d5akn")]
 position = Vector2(459, -9)
+
+[node name="Cristal" parent="Baús/Baú" unique_id=166003114 instance=ExtResource("30_iw4em")]
+position = Vector2(173, -42)
+
+[node name="ItemPickup" parent="Baús/Baú" unique_id=293685691 instance=ExtResource("29_hnsmf")]
+position = Vector2(94, -18)
+
+[node name="CheckPoints" type="Node2D" parent="." unique_id=266397434]
+
+[node name="Checkpoint_Inicio" parent="CheckPoints" unique_id=1942877122 instance=ExtResource("27_mmfjm")]
+position = Vector2(397, 72)
+
+[node name="Checkpoint_Inicio2" parent="CheckPoints" unique_id=262319070 instance=ExtResource("27_mmfjm")]
+position = Vector2(1450, 65)
 
 [connection signal="pressed" from="UI/GameOverScreen/Container/VBoxContainer/RestartButton" to="Player" method="_on_restart_button_pressed"]

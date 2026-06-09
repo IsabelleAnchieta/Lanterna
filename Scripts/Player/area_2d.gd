@@ -1,7 +1,7 @@
 extends Area2D
 var player_perto = null
 @onready var sprite = $AnimatedSprite2D
-@onready var hint = get_tree().current_scene.get_node("UI/Dicas/HintLabel")
+@onready var hint = get_tree().current_scene.get_node("UI/HintLabel")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,7 +22,6 @@ func _process(delta: float) -> void:
 			player.luz.energy = 1.42
 			player.pegou_primeira_tocha = true
 			hint.visible = false
-			queue_free()
 			print("PEGOU TOCHA")
 			
 

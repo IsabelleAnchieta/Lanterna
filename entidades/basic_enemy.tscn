@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bl2iw0fe0xqft" path="res://sprites/Enemy/Basic Enemy/Dying.png" id="2_o5yh7"]
 [ext_resource type="Texture2D" uid="uid://bxg8kn824oe6h" path="res://sprites/Enemy/Basic Enemy/pixilart-drawing (1).png" id="3_o5yh7"]
 [ext_resource type="PackedScene" uid="uid://bn6o3by002x0r" path="res://entidades/hitbox.tscn" id="3_q3ndq"]
+[ext_resource type="Texture2D" uid="uid://drkw5veb1asql" path="res://sprites/Objects/luz.jpg" id="5_m0fyf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m0fyf"]
 atlas = ExtResource("2_o5yh7")
@@ -97,7 +98,7 @@ size = Vector2(7, 27)
 [node name="Basic Enemy" type="CharacterBody2D" unique_id=1998195531 groups=["enemies"]]
 collision_layer = 4
 collision_mask = 114
-platform_floor_layers = 4294967106
+platform_floor_layers = 4294967234
 script = ExtResource("1_13oly")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1801125558]
@@ -112,16 +113,24 @@ shape = SubResource("CapsuleShape2D_q3ndq")
 [node name="walldet" type="RayCast2D" parent="." unique_id=1132647073]
 position = Vector2(4, -4)
 target_position = Vector2(13, 0)
-collision_mask = 2
+collision_mask = 130
 
 [node name="hitbox" parent="." unique_id=1995360508 instance=ExtResource("3_q3ndq")]
 position = Vector2(3, -17)
-collision_mask = 48
+collision_mask = 176
 script = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1601377349]
 position = Vector2(1, 15)
 shape = SubResource("RectangleShape2D_o5yh7")
+
+[node name="Luz" type="PointLight2D" parent="." unique_id=1769876457]
+position = Vector2(0, -21)
+color = Color(1, 0.003921569, 0, 1)
+energy = 1.42
+texture = ExtResource("5_m0fyf")
+texture_scale = 0.22
+height = 19.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

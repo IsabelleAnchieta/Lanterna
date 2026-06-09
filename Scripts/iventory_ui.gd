@@ -27,8 +27,12 @@ var slot_selecionado = -1
 ]
 
 func _ready():
+	itens = Global.inventory.duplicate(true)
+
+	atualizar_ui()
+
 	$VBoxContainer.visible = false
-	
+
 	for i in range(slots.size()):
 		slots[i].gui_input.connect(_on_slot_input.bind(i))
 	
@@ -44,6 +48,7 @@ func adicionar_item(textura, nome, descricao):
 		"nome": nome,
 		"descricao": descricao
 	})
+	Global.inventory = itens.duplicate(true)
 	atualizar_ui()
 
 func atualizar_ui():
